@@ -1,0 +1,11 @@
+{
+	"name": "com.fellowshipofthegame.dialoguemodule",
+	"version": "1.0.0",
+	"displayName": "[FoG] Dialogue Module",
+	"unity": "2020.3",
+	"dependencies": {
+	  "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git",
+	  "com.unity.inputsystem": "1.0.2",
+	  "com.unity.textmeshpro": "3.0.6"
+	}
+  }
