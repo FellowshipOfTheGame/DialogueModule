@@ -2,7 +2,7 @@
 	"name": "com.fellowshipofthegame.dialoguemodule",
 	"version": "1.0.0",
 	"displayName": "[FoG] Dialogue Module",
-	"description": "The dialogue module From Anathema revised and updated in Final Inferno, now available as a package",
+	"description": "The dialogue module from Anathema revised and updated in Final Inferno, now available as a package",
 	"unity": "2020.3",
 	"dependencies": {
 	  "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git#1.0.1",
