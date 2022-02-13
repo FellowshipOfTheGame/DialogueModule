@@ -13,7 +13,7 @@ Use the url ```https://github.com/FellowshipOfTheGame/DialogueModule.git``` and 
 
 - Editing the Packages/manifest.json file directly
 
-Make sure the project is in the dependencies list and open the project as usual:
+Make sure this project is in the dependencies list as shown below and open the project as usual:
 
     {
       "dependencies": {
