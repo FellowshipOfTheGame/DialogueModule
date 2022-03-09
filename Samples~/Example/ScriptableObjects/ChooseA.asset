@@ -15,4 +15,4 @@ MonoBehaviour:
   lines:
     array:
     - speaker: {fileID: 11400000, guid: 975b2c08788ba4543874afd4c71eacad, type: 2}
-      text: Hello, World
+      text: You chose A

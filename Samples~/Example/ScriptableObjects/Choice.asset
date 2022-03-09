@@ -21,6 +21,6 @@ MonoBehaviour:
     text: Pick a choice, A or B?
   options:
   - text: A
-    nextDialogue: {fileID: 11400000, guid: 778bbf9d872cda34b964835dc83683bf, type: 2}
+    nextDialogue: {fileID: 11400000, guid: 7822ad54727c52146878e8332ac5a369, type: 2}
   - text: B
-    nextDialogue: {fileID: 11400000, guid: b9a287502abac744a8828736c7196124, type: 2}
+    nextDialogue: {fileID: 11400000, guid: 90a40f2ca2871234a83fec26468dcfea, type: 2}
