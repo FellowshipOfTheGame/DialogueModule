@@ -1,0 +1,19 @@
+{
+    "name": "Fog.Dialogue.Editor",
+    "rootNamespace": "Fog.Dialogue.Editor",
+    "references": [
+        "GUID:79be54fb8fa02ba47a1523c704eebcda",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
