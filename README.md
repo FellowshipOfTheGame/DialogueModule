@@ -28,3 +28,9 @@ The Example sample included in the package has a scene and dialogues with 3 use 
 The example is based on the [FinalInferno](https://github.com/FellowshipOfTheGame/FinalInferno) use of the package, where we inherit the base Dialogue and OptionsDialogue classes to add extra behaviour when starting/ending dialogue instead of pausing the game.
 
 If the desired effect is the one from [Anathema](https://github.com/FellowshipOfTheGame/anathema) the base classes would suffice, all you need to do is check the pauseDuringDialogue option in the DialogueHandler.
+
+## How to contribute
+
+After changes are pushed to the main branch of the repo, a [github action](.github/workflows/UpdateUPMBranch.yml) will automatically update the upm branch with the proper directory structure for a release. After that it's just a matter of doing a new release pointing to that upm branch.
+
+When creating a new release, it is necessary to update the version number in the [package.json](Assets/UPM/package.json) file using [semanting versioning](https://semver.org/) for the number (_major_._minor_._patch_). The tag for the new release must also correspond with this new version number.
