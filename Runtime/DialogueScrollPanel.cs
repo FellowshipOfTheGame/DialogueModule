@@ -51,13 +51,13 @@ namespace Fog.Dialogue {
             return Mathf.Clamp(distance / (ContentHeight - ViewportHeight), 0f, 1f);
         }
 
-        private float GetRectBottom(RectTransform rect){
+        private float GetRectBottom(RectTransform rect) {
             Vector3[] corners = new Vector3[4];
             rect.GetWorldCorners(corners);
             return corners[0].y;
         }
 
-        private float GetRectTop(RectTransform rect){
+        private float GetRectTop(RectTransform rect) {
             Vector3[] corners = new Vector3[4];
             rect.GetWorldCorners(corners);
             return corners[1].y;
@@ -78,9 +78,8 @@ namespace Fog.Dialogue {
         }
 
         public void JumpToPosition(float targetNormalPosition) {
-            if (smoothScrolling) {
+            if (smoothScrolling)
                 StopAllCoroutines();
-            }
             Canvas.ForceUpdateCanvases();
             verticalNormalizedPosition = Mathf.Clamp(targetNormalPosition, 0f, 1f);
         }
@@ -145,38 +144,30 @@ namespace Fog.Dialogue {
 
         protected override void OnEnable() {
             base.OnEnable();
-            if (skipIndicator != null) {
+            if (skipIndicator != null)
                 skipIndicator.SetActive(true);
-            }
-            if (scrollUpIndicator != null) {
+            if (scrollUpIndicator != null)
                 scrollUpIndicator.SetActive(false);
-            }
-            if (scrollDownIndicator != null) {
+            if (scrollDownIndicator != null)
                 scrollDownIndicator.SetActive(false);
-            }
         }
 
         protected override void OnDisable() {
-            if (skipIndicator != null) {
+            if (skipIndicator != null)
                 skipIndicator.SetActive(false);
-            }
-            if (scrollUpIndicator != null) {
+            if (scrollUpIndicator != null)
                 scrollUpIndicator.SetActive(false);
-            }
-            if (scrollDownIndicator != null) {
+            if (scrollDownIndicator != null)
                 scrollDownIndicator.SetActive(false);
-            }
             base.OnDisable();
         }
 
         protected override void LateUpdate() {
             base.LateUpdate();
-            if (scrollUpIndicator != null) {
+            if (scrollUpIndicator != null)
                 scrollUpIndicator.SetActive(IsVerticalPositionLowerThan(1.0f) && (ContentHeight - ViewportHeight > Mathf.Epsilon));
-            }
-            if (scrollDownIndicator != null) {
+            if (scrollDownIndicator != null)
                 scrollDownIndicator.SetActive(IsVerticalPositionHigherThan(0f) && (ContentHeight - ViewportHeight > Mathf.Epsilon));
-            }
         }
     }
 }

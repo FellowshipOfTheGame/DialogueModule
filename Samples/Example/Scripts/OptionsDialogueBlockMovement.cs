@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Fog.Dialogue.Samples {
     [CreateAssetMenu(fileName = "NewOptionsDialogue", menuName = "FoG/DialogueModule/Sample/OptionsDialogueSample")]
     public class OptionsDialogueBlockMovement : OptionsDialogue {
-        public override void BeforeDialogue(){
+        public override void BeforeDialogue() {
             SimpleMove.instance.BlockMovement();
 
             base.BeforeDialogue();

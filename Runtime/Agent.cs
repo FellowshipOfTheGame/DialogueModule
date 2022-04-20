@@ -8,12 +8,11 @@ namespace Fog.Dialogue {
         #region Singleton
         public static Agent Instance { get; private set; } = null;
         public void Awake() {
-            if (!Instance) {
-                Instance = this;
-            } else {
+            if (Instance) {
                 Destroy(this);
+                return;
             }
-
+            Instance = this;
             nFramesCooldown = Mathf.Max(nFramesCooldown, 1);
         }
         public void OnDestroy() {
@@ -92,11 +91,11 @@ namespace Fog.Dialogue {
             }
         }
 
-        public void BlockInteractions(){
+        public void BlockInteractions() {
             canInteract = false;
         }
 
-        public void AllowInteractions(){
+        public void AllowInteractions() {
             ResetInputCooldownTimer();
             canInteract = true;
         }

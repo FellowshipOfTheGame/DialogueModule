@@ -64,21 +64,21 @@ namespace Fog.Dialogue {
         public static DialogueHandler instance;
         public static bool debugActivated = false;
 
-		#region Singleton
+        #region Singleton
         private void Awake() {
-            if (isSingleton) {
-                if (instance == null) {
-                    instance = this;
-                } else if (instance != this) {
-                    Destroy(this);
-                }
+            if (!isSingleton)
+                return;
+
+            if (instance == null) {
+                instance = this;
+            } else if (instance != this) {
+                Destroy(this);
             }
         }
 
         private void OnDestroy() {
-            if (isSingleton && instance == this) {
+            if (isSingleton && instance == this)
                 instance = null;
-            }
         }
         #endregion
 
@@ -88,15 +88,16 @@ namespace Fog.Dialogue {
         }
 
         private void Update() {
-            if (IsActive) {
-                if (isLineDone) {
-                    CheckScrollInput();
-                    CheckNextLineInput();
-                } else {
-                    CheckSkipLineInput();
-                }
-                SkipAllLinesIfDebug();
+            if (!IsActive)
+                return;
+
+            if (isLineDone) {
+                CheckScrollInput();
+                CheckNextLineInput();
+            } else {
+                CheckSkipLineInput();
             }
+            CheckSkipAllLinesIfDebug();
         }
 
         private void CheckScrollInput() {
@@ -105,24 +106,21 @@ namespace Fog.Dialogue {
         }
 
         private void CheckNextLineInput() {
-            if (submitAction.action.triggered) {
+            if (submitAction.action.triggered)
                 StartCoroutine(NextLineCoroutine());
-            }
         }
 
         private void CheckSkipLineInput() {
-            if (submitAction.action.triggered) {
+            if (submitAction.action.triggered)
                 Skip();
-            }
         }
 
-        private void SkipAllLinesIfDebug() {
-            if (debugActivated) {
-                if (cancelAction.action.triggered) {
-                    dialogueLines.Clear();
-                    EndDialogue();
-                }
-            }
+        private void CheckSkipAllLinesIfDebug() {
+            if (!debugActivated || !cancelAction.action.triggered)
+                return;
+
+            dialogueLines.Clear();
+            EndDialogue();
         }
 
         public void StartDialogue(Dialogue dialogue) {
@@ -141,15 +139,13 @@ namespace Fog.Dialogue {
         }
 
         private void EndActiveDialogue() {
-            if (IsActive) {
+            if (IsActive)
                 EndDialogue();
-            }
         }
 
         private void PauseGameIfNeeded() {
-            if (pauseDuringDialogue) {
+            if (pauseDuringDialogue)
                 Time.timeScale = 0f;
-            }
         }
 
         private void EnqueueDialogueLines() {
@@ -171,9 +167,8 @@ namespace Fog.Dialogue {
         }
 
         private void EndActiveDialogueWithoutCallback() {
-            if (IsActive) {
+            if (IsActive)
                 EndDialogueWithoutCallback();
-            }
         }
 
         private void ShowQuestion(DialogueLine questionLine, DialogueOptionInfo[] options) {
@@ -194,7 +189,7 @@ namespace Fog.Dialogue {
             if (dialogueLines.Count <= 0) {
                 EndDialogue();
                 yield break;
-            } 
+            }
             currentLine = dialogueLines.Dequeue();
             yield return ShowLineSpeakerAndTextCoroutine();
             isLineDone = true;
@@ -202,9 +197,8 @@ namespace Fog.Dialogue {
         }
 
         private IEnumerator ActivateInputCheck() {
-            if(useTypingEffect){
+            if (useTypingEffect)
                 yield return null;
-            }
             IsActive = true;
         }
 
@@ -226,9 +220,8 @@ namespace Fog.Dialogue {
 
         private void UpdatePanelColor() {
             Image panelImg = dialogueBox.GetComponent<Image>();
-            if (panelImg) {
+            if (panelImg)
                 panelImg.color = currentLine.Color;
-            }
         }
 
         private void UpdatePortrait() {
@@ -236,39 +229,41 @@ namespace Fog.Dialogue {
             Color transparent = Color.white;
             transparent.a = 0;
 
-            if (usePortraits && portrait != null) {
-                portrait.sprite = currentLine.Portrait;
-                portrait.color = (portrait.sprite != null) ? Color.white : transparent;
-                portrait.gameObject.SetActive(portrait.sprite != null);
-            }
+            if (!usePortraits || portrait == null)
+                return;
+
+            portrait.sprite = currentLine.Portrait;
+            portrait.color = (portrait.sprite != null) ? Color.white : transparent;
+            portrait.gameObject.SetActive(portrait.sprite != null);
         }
 
         private void UpdateTitle() {
-            if (useTitles && currentLine.Title != null) {
-                titleText.text = "";
-                if (titleText == dialogueText) {
-                    titleText.text += $"<size={dialogueText.fontSize + 3}>";
-                }
+            if (!useTitles || currentLine.Title == null)
+                return;
 
-                titleText.text += $"<b>{currentLine.Title}</b>";
-                if (titleText == dialogueText) {
-                    titleText.text += "</size>";
-                    titleText.text += "\n";
-                    currentTitle = titleText.text;
-                }
+            titleText.text = "";
+            if (titleText == dialogueText)
+                titleText.text += $"<size={dialogueText.fontSize + 3}>";
+
+            titleText.text += $"<b>{currentLine.Title}</b>";
+            if (titleText == dialogueText) {
+                titleText.text += "</size>";
+                titleText.text += "\n";
+                currentTitle = titleText.text;
             }
         }
 
         public void Skip() {
-            if (IsActive) {
-                StopAllCoroutines();
-                if (fillInBeforeSkip && !isLineDone) {
-                    FillDialogueText();
-                    dialogueBox.JumpToEnd();
-                    isLineDone = true;
-                } else {
-                    StartCoroutine(NextLineCoroutine());
-                }
+            if (!IsActive)
+                return;
+
+            StopAllCoroutines();
+            if (fillInBeforeSkip && !isLineDone) {
+                FillDialogueText();
+                dialogueBox.JumpToEnd();
+                isLineDone = true;
+            } else {
+                StartCoroutine(NextLineCoroutine());
             }
         }
 
@@ -307,22 +302,19 @@ namespace Fog.Dialogue {
             dialogueBox.gameObject.SetActive(false);
             dialogueText.text = "";
             titleText.text = "";
-            if (portrait && portrait.sprite) {
+            if (portrait && portrait.sprite)
                 portrait.sprite = null;
-            }
             Image panelImg = dialogueBox.GetComponent<Image>();
-            if(panelImg) {
+            if (panelImg)
                 panelImg.color = defaultPanelColor;
-            }
             StopAllCoroutines();
             currentLine = null;
             IsActive = false;
         }
 
         private void UnpauseGameIfNeeded() {
-            if (pauseDuringDialogue) {
+            if (pauseDuringDialogue)
                 Time.timeScale = 1f;
-            }
         }
 
         public static IEnumerator WaitForFrames(int frameCount) {

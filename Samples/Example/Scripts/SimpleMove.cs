@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Fog.Dialogue.Samples
-{
+namespace Fog.Dialogue.Samples {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SimpleMove : MonoBehaviour
-    {
+    public class SimpleMove : MonoBehaviour {
         [SerializeField, Range(0, 100)] private float moveSpeed;
         public bool canMove = true;
         public static SimpleMove instance = null;
@@ -13,18 +11,18 @@ namespace Fog.Dialogue.Samples
         private Rigidbody2D rigid;
 
         void Awake() {
-            rigid = GetComponent<Rigidbody2D>();
-            if(instance == null) {
-                instance = this;
-            } else {
+            if (instance != null) {
                 Destroy(this);
+                return;
             }
+
+            instance = this;
+            rigid = GetComponent<Rigidbody2D>();
         }
 
         void OnDestroy() {
-            if(instance == this) {
+            if (instance == this)
                 instance = null;
-            }
         }
 
         public void BlockMovement() {
@@ -37,14 +35,11 @@ namespace Fog.Dialogue.Samples
         }
 
         void Update() {
-            if (canMove)
-            {
+            if (canMove) {
                 Vector2 speed = movementAction.action.ReadValue<Vector2>();
                 speed *= moveSpeed;
                 rigid.velocity = speed;
-            }
-            else
-            {
+            } else {
                 rigid.velocity = Vector2.zero;
             }
         }

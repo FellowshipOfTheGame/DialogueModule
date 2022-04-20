@@ -15,11 +15,12 @@ namespace Fog.Dialogue {
         public UnityAction OnExit = null;
 
         private void Awake() {
-            if (focusIndicator) {
-                focusIndicator.enabled = false;
-                OnFocus += ToggleFocus;
-                OnExit += ToggleFocus;
-            }
+            if (!focusIndicator)
+                return;
+
+            focusIndicator.enabled = false;
+            OnFocus += ToggleFocus;
+            OnExit += ToggleFocus;
         }
 
         public void Configure(DialogueOptionInfo info) {
@@ -28,9 +29,8 @@ namespace Fog.Dialogue {
         }
 
         private void ToggleFocus() {
-            if (focusIndicator) {
+            if (focusIndicator)
                 focusIndicator.enabled = !focusIndicator.enabled;
-            }
         }
     }
 }

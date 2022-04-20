@@ -124,16 +124,21 @@ namespace Fog.Dialogue {
         }
 
         private void Update() {
-            if (IsActive) {
-                if (IsTimerOver) {
-                    if (SubmitButtonIsPressed) {
-                        CurrentOption.OnSelect?.Invoke();
-                    } else {
-                        CheckSelectionInput();
-                    }
-                    ResetTimer();
-                }
-                UpdateTimer();
+            if (!IsActive)
+                return;
+
+            if (IsTimerOver) {
+                CheckInputs();
+                ResetTimer();
+            }
+            UpdateTimer();
+        }
+
+        private void CheckInputs() {
+            if (SubmitButtonIsPressed) {
+                CurrentOption.OnSelect?.Invoke();
+            } else {
+                CheckSelectionInput();
             }
         }
 
@@ -148,17 +153,17 @@ namespace Fog.Dialogue {
         }
 
         private void FocusNewOptionIfNecessary(int newOptionIndex) {
-            if (newOptionIndex != currentOptionIndex) {
-                CurrentOption.OnExit?.Invoke();
-                currentOptionIndex = newOptionIndex;
-                CurrentOption.OnFocus?.Invoke();
-            }
+            if (newOptionIndex == currentOptionIndex)
+                return;
+
+            CurrentOption.OnExit?.Invoke();
+            currentOptionIndex = newOptionIndex;
+            CurrentOption.OnFocus?.Invoke();
         }
 
         private void ShowHeaderIfNecessary(float input) {
-            if (input > 0 && currentOptionIndex == 0) {
+            if (input > 0 && currentOptionIndex == 0)
                 scrollPanel.ScrollToStart();
-            }
         }
 
         private void UpdateTimer() {
