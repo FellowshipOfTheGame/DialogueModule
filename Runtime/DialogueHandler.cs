@@ -1,8 +1,8 @@
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -39,7 +39,7 @@ namespace Fog.Dialogue {
         [Header("Settings")]
         [Tooltip("Whether or not the characters are going to be displayed one at a time.")]
         public bool useTypingEffect = false;
-        [HideInInspectorIfNot(nameof(useTypingEffect))] [Range(1, 60)] public int framesBetweenCharacters = 0;
+        [HideInInspectorIfNot(nameof(useTypingEffect))][Range(1, 60)] public int framesBetweenCharacters = 0;
         [Tooltip("If true, trying to skip dialogue will first fill in the entire dialogue line and then skip if prompted again, if false it will skip right away.")]
         [HideInInspectorIfNot(nameof(useTypingEffect))] public bool fillInBeforeSkip = false;
         [Tooltip("Whether or not, after filling in the entire text, the dialogue skips to the next line automatically.")]
@@ -49,18 +49,16 @@ namespace Fog.Dialogue {
         public bool pauseDuringDialogue = false;
         [Tooltip("Advanced setting: If there is only 1 handler/dialogue box (A visual novel for example) you can make this a singleton and call it from DialogueHandler.instance. If unsure, leave it false.")]
         public bool isSingleton = false;
-
         private Queue<DialogueLine> dialogueLines = new Queue<DialogueLine>();
         private DialogueLine currentLine;
         private bool isLineDone;
         public bool IsActive { get; private set; } = false;
         private string currentTitle;
         private Color defaultPanelColor;
-
+        private StringBuilder stringBuilder;
         public delegate void DialogueAction();
         public event DialogueAction OnDialogueStart;
         public event DialogueAction OnDialogueEnd;
-
         public static DialogueHandler instance;
         public static bool debugActivated = false;
 
@@ -85,6 +83,7 @@ namespace Fog.Dialogue {
         private void Start() {
             Image panelImg = dialogueBox != null ? dialogueBox.GetComponent<Image>() : null;
             defaultPanelColor = panelImg ? panelImg.color : Color.white;
+            stringBuilder = new StringBuilder();
         }
 
         private void Update() {
@@ -241,15 +240,17 @@ namespace Fog.Dialogue {
             if (!useTitles || currentLine.Title == null)
                 return;
 
-            titleText.text = "";
+            stringBuilder.Clear();
             if (titleText == dialogueText)
-                titleText.text += $"<size={dialogueText.fontSize + 3}>";
+                stringBuilder.Append($"<size={dialogueText.fontSize + 3}>");
 
-            titleText.text += $"<b>{currentLine.Title}</b>";
+            stringBuilder.Append($"<b>{currentLine.Title}</b>");
             if (titleText == dialogueText) {
-                titleText.text += "</size>";
-                titleText.text += "\n";
+                stringBuilder.Append("</size>\n");
+                titleText.text = stringBuilder.ToString();
                 currentTitle = titleText.text;
+            } else {
+                titleText.text = stringBuilder.ToString();
             }
         }
 
@@ -276,16 +277,21 @@ namespace Fog.Dialogue {
         }
 
         private IEnumerator TypeDialogueTextCoroutine() {
+            stringBuilder.Clear();
+            stringBuilder.Append(dialogueText.text);
             foreach (char character in currentLine.Text) {
-                dialogueText.text += character;
+                stringBuilder.Append(character);
+                dialogueText.text = stringBuilder.ToString();
                 dialogueBox.ScrollToEnd();
                 yield return WaitForFrames(framesBetweenCharacters);
             }
         }
 
         private void FillDialogueText() {
-            dialogueText.text = (dialogueText == titleText) ? currentTitle : "";
-            dialogueText.text += currentLine.Text;
+            stringBuilder.Clear();
+            stringBuilder.Append((dialogueText == titleText) ? currentTitle : "");
+            stringBuilder.Append(currentLine.Text);
+            dialogueText.text = stringBuilder.ToString();
         }
 
         public void EndDialogue() {
