@@ -10,15 +10,20 @@ namespace Fog.Dialogue {
     public class DialogueLine {
         [Header("Dialogue Properties")]
         [SerializeField] private DialogueEntity speaker = null;
-        [SerializeField] [TextArea(3, 5)] private string text = null;
+        [SerializeField, TextArea(3, 5)] private string text = null;
+
+        public DialogueLine(DialogueLine otherLine) {
+            speaker = otherLine.speaker;
+            text = $"{otherLine.text}";
+        }
 
         public DialogueLine(DialogueEntity speaker, string text) {
             this.speaker = speaker;
             this.text = $"{text}";
         }
 
-        public DialogueLine Clone() {
-            return new DialogueLine(speaker, text);
+        public virtual object Clone() {
+            return new DialogueLine(this);
         }
 
         public string Title => (speaker == null) ? null : speaker.DialogueName;
