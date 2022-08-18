@@ -9,6 +9,18 @@ namespace Fog.Dialogue {
         [SerializeField] private DialogueLine question;
         [SerializeField] private DialogueOptionInfo[] options;
 
+        protected void CopyFrom(OptionsDialogue otherDialogue) {
+            base.CopyFrom(otherDialogue);
+            question = (DialogueLine)otherDialogue.question.Clone();
+            options = (DialogueOptionInfo[])otherDialogue.options.Clone();
+        }
+
+        public override object Clone() {
+            OptionsDialogue clone = CreateInstance<OptionsDialogue>();
+            clone.CopyFrom(this);
+            return clone;
+        }
+
         public override void AfterDialogue() {
             base.AfterDialogue();
             Agent.Instance.BlockInteractions();

@@ -52,9 +52,9 @@ namespace Fog.Dialogue {
                     CreateNewOption(info);
                 }
                 // This can be called from animation instead of coroutine, for better visual effect
-                StartCoroutine(DelayedActivate(0.5f));
+                StartCoroutine(DelayedActivate(activationTime));
             } else {
-                Debug.Log("Passed empty option array to Dialogue Handler");
+                Debug.Log("Passed empty option array to Dialogue Handler", this);
                 SelectOption();
             }
         }
@@ -99,7 +99,8 @@ namespace Fog.Dialogue {
         }
 
         private void SelectOption() {
-            audioSource.PlayOneShot(selectOption);
+            if (selectOption)
+                audioSource.PlayOneShot(selectOption);
             Deactivate();
             ResetTimer();
             Dialogue selectedDialogue = (currentOptionIndex >= 0) ? CurrentOption.NextDialogue : null;
@@ -145,11 +146,11 @@ namespace Fog.Dialogue {
         private void CheckSelectionInput() {
             float axisValue = directionsAction.action.ReadValue<Vector2>().y;
             float input = axisValue * (-1f);
-            if (input != 0) {
-                int newOptionIndex = Mathf.Clamp(currentOptionIndex + ((input > 0) ? 1 : -1), 0, options.Count - 1);
-                FocusNewOptionIfNecessary(newOptionIndex);
-                ShowHeaderIfNecessary(input);
-            }
+            if (input == 0)
+                return;
+            int newOptionIndex = Mathf.Clamp(currentOptionIndex + ((input > 0) ? 1 : -1), 0, options.Count - 1);
+            FocusNewOptionIfNecessary(newOptionIndex);
+            ShowHeaderIfNecessary(input);
         }
 
         private void FocusNewOptionIfNecessary(int newOptionIndex) {

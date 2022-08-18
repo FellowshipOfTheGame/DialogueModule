@@ -1,19 +1,19 @@
 {
 	"name": "com.fellowshipofthegame.dialoguemodule",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"displayName": "[FoG] Dialogue Module",
 	"description": "The dialogue module from Anathema revised and updated in Final Inferno, now available as a package",
 	"unity": "2020.3",
 	"dependencies": {
-	  "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git#1.0.1",
-	  "com.unity.inputsystem": "1.0.2",
-	  "com.unity.textmeshpro": "3.0.6"
+		"com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git#1.0.1",
+		"com.unity.inputsystem": "1.0.2",
+		"com.unity.textmeshpro": "3.0.6"
 	},
-    "samples": [
-        {
-            "displayName": "Example",
-            "description": "Simple example of character moving and 3 test dialogues",
-            "path": "Samples~/Example"
-        }
-    ]
-  }
+	"samples": [
+		{
+			"displayName": "Example",
+			"description": "Simple example of character moving and 3 test dialogues",
+			"path": "Samples~/Example"
+		}
+	]
+}

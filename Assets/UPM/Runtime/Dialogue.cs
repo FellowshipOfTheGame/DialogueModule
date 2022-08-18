@@ -2,9 +2,6 @@ using Malee.List;
 using UnityEngine;
 
 namespace Fog.Dialogue {
-    [System.Serializable]
-    public class ReorderableDialogueList : ReorderableArray<DialogueLine> { }
-
     /// <summary>
     ///     Creates a scriptable object for an array of dialogue lines, so that it can be saved as a file.
     /// </summary>
@@ -15,24 +12,29 @@ namespace Fog.Dialogue {
 
         [ContextMenu("Copy")]
         private void CopyLines() {
-            clipboard = new ReorderableDialogueList();
-            foreach (DialogueLine line in lines) {
-                clipboard.Add(line.Clone());
-            }
+            clipboard = (ReorderableDialogueList)lines.Clone();
         }
 
         [ContextMenu("Paste")]
         private void PasteLines() {
-            if (clipboard != null) {
-                UnityEditor.Undo.RecordObject(this, "Pasted Dialogue Lines");
-                lines = new ReorderableDialogueList();
-                foreach (DialogueLine line in clipboard) {
-                    lines.Add(line.Clone());
-                }
-            }
+            if (clipboard == null)
+                return;
+            UnityEditor.Undo.RecordObject(this, $"Pasted Dialogue Lines ({name})");
+            lines = (ReorderableDialogueList)clipboard.Clone();
+            UnityEditor.EditorUtility.SetDirty(this);
         }
 #endif
         [Reorderable] public ReorderableDialogueList lines;
+
+        protected void CopyFrom(Dialogue otherDialogue) {
+            otherDialogue.lines = (ReorderableDialogueList)otherDialogue.lines.Clone();
+        }
+
+        public virtual object Clone() {
+            Dialogue clone = CreateInstance<Dialogue>();
+            clone.CopyFrom(this);
+            return clone;
+        }
 
         public virtual void BeforeDialogue() {
             if (Agent.Instance)
