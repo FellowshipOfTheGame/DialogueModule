@@ -1,6 +1,6 @@
 {
 	"name": "com.fellowshipofthegame.dialoguemodule",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"displayName": "[FoG] Dialogue Module",
 	"description": "The dialogue module from Anathema revised and updated in Final Inferno, now available as a package",
 	"unity": "2020.3",
