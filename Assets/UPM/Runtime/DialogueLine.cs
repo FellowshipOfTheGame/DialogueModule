@@ -26,9 +26,9 @@ namespace Fog.Dialogue {
             return new DialogueLine(this);
         }
 
-        public string Title => (speaker == null) ? null : speaker.DialogueName;
-        public Color Color => (speaker == null) ? Color.white : speaker.DialogueColor;
-        public Sprite Portrait => (speaker == null) ? null : speaker.DialoguePortrait;
-        public string Text => text;
+        public virtual string Title => (speaker == null) ? null : speaker.DialogueName;
+        public virtual Color Color => (speaker == null) ? Color.white : speaker.DialogueColor;
+        public virtual Sprite Portrait => (speaker == null) ? null : speaker.DialoguePortrait;
+        public virtual string Text => text;
     }
 }

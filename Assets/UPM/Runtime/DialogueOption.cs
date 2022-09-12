@@ -23,12 +23,12 @@ namespace Fog.Dialogue {
             OnExit += ToggleFocus;
         }
 
-        public void Configure(DialogueOptionInfo info) {
+        public virtual void Configure(DialogueOptionInfo info) {
             textField.text = info.text;
             NextDialogue = info.nextDialogue;
         }
 
-        private void ToggleFocus() {
+        protected virtual void ToggleFocus() {
             if (focusIndicator)
                 focusIndicator.enabled = !focusIndicator.enabled;
         }
