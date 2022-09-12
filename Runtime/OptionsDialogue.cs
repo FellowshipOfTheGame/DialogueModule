@@ -6,8 +6,8 @@ namespace Fog.Dialogue {
     /// </summary>
     [CreateAssetMenu(fileName = "NewOptionsDialogue", menuName = "FoG/DialogueModule/OptionsDialogue")]
     public class OptionsDialogue : Dialogue {
-        [SerializeField] private DialogueLine question;
-        [SerializeField] private DialogueOptionInfo[] options;
+        [SerializeField] protected DialogueLine question;
+        [SerializeField] protected DialogueOptionInfo[] options;
 
         protected void CopyFrom(OptionsDialogue otherDialogue) {
             base.CopyFrom(otherDialogue);
