@@ -23,7 +23,7 @@ Se certifique que este projeto está na lista de dependências como mostrado aba
 
 Se você quer instalar uma versão específica do pacote siga as instruções acima, mas substitua #upm com a versão desejada.
 
-A url no primeiro exemplo seria ```https://github.com/FellowshipOfTheGame/DialogueModule.git#1.0.3``` para a versão 1.0.3.
+A url no primeiro exemplo seria ```https://github.com/FellowshipOfTheGame/DialogueModule.git#1.0.4``` para a versão 1.0.4.
 
 ## __Como usar__
 

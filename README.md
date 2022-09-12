@@ -25,7 +25,7 @@ Make sure this project is in the dependencies list as shown below and open the p
 
 If you want to install a specific version of the package follow the instructions above, but replace #upm with the desired version.
 
-The url in the first example would be ```https://github.com/FellowshipOfTheGame/DialogueModule.git#1.0.3``` for version 1.0.3.
+The url in the first example would be ```https://github.com/FellowshipOfTheGame/DialogueModule.git#1.0.4``` for version 1.0.4.
 
 ## __How to use__
 

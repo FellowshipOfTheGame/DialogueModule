@@ -52,10 +52,10 @@ namespace Fog.Dialogue {
         private Queue<DialogueLine> dialogueLines = new Queue<DialogueLine>();
         private DialogueLine currentLine;
         private bool isLineDone;
-        public bool IsActive { get; private set; } = false;
-        private string currentTitle;
-        private Color defaultPanelColor;
-        private StringBuilder stringBuilder;
+        public bool IsActive { get; protected set; } = false;
+        protected string currentTitle;
+        protected Color defaultPanelColor;
+        protected StringBuilder stringBuilder;
         public delegate void DialogueAction();
         public event DialogueAction OnDialogueStart;
         public event DialogueAction OnDialogueEnd;
@@ -217,13 +217,13 @@ namespace Fog.Dialogue {
             }
         }
 
-        private void UpdatePanelColor() {
+        protected virtual void UpdatePanelColor() {
             Image panelImg = dialogueBox.GetComponent<Image>();
             if (panelImg)
                 panelImg.color = currentLine.Color;
         }
 
-        private void UpdatePortrait() {
+        protected virtual void UpdatePortrait() {
             portrait.sprite = null;
             Color transparent = Color.white;
             transparent.a = 0;
@@ -236,7 +236,7 @@ namespace Fog.Dialogue {
             portrait.gameObject.SetActive(portrait.sprite != null);
         }
 
-        private void UpdateTitle() {
+        protected virtual void UpdateTitle() {
             if (!useTitles || currentLine.Title == null)
                 return;
 
@@ -276,7 +276,7 @@ namespace Fog.Dialogue {
             }
         }
 
-        private IEnumerator TypeDialogueTextCoroutine() {
+        protected virtual IEnumerator TypeDialogueTextCoroutine() {
             stringBuilder.Clear();
             stringBuilder.Append(dialogueText.text);
             foreach (char character in currentLine.Text) {
@@ -287,7 +287,7 @@ namespace Fog.Dialogue {
             }
         }
 
-        private void FillDialogueText() {
+        protected virtual void FillDialogueText() {
             stringBuilder.Clear();
             stringBuilder.Append((dialogueText == titleText) ? currentTitle : "");
             stringBuilder.Append(currentLine.Text);
