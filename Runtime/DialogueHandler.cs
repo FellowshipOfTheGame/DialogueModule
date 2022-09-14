@@ -50,7 +50,7 @@ namespace Fog.Dialogue {
         [Tooltip("Advanced setting: If there is only 1 handler/dialogue box (A visual novel for example) you can make this a singleton and call it from DialogueHandler.instance. If unsure, leave it false.")]
         public bool isSingleton = false;
         private Queue<DialogueLine> dialogueLines = new Queue<DialogueLine>();
-        private DialogueLine currentLine;
+        protected DialogueLine currentLine;
         private bool isLineDone;
         public bool IsActive { get; protected set; } = false;
         protected string currentTitle;
