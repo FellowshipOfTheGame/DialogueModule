@@ -13,11 +13,12 @@ Use the url ```https://github.com/FellowshipOfTheGame/DialogueModule.git#upm``` 
 
 - __Editing the Packages/manifest.json file directly__
 
-Make sure this project is in the dependencies list as shown below and open the project as usual:
+Make sure this project and its depencency are in the dependencies list as shown below and open the project as usual:
 
     {
       "dependencies": {
-        "com.fellowshipofthegame.dialoguemodule": "https://github.com/FellowshipOfTheGame/DialogueModule.git#upm"
+        "com.fellowshipofthegame.dialoguemodule": "https://github.com/FellowshipOfTheGame/DialogueModule.git#upm",
+        "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git#1.0.1"
       }
     }
 
