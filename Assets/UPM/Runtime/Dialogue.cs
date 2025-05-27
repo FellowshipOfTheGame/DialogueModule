@@ -1,4 +1,4 @@
-using Malee.List;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Fog.Dialogue {
@@ -8,26 +8,32 @@ namespace Fog.Dialogue {
     [CreateAssetMenu(fileName = "NewDialogue", menuName = "FoG/DialogueModule/Dialogue")]
     public class Dialogue : ScriptableObject {
 #if UNITY_EDITOR
-        protected static ReorderableDialogueList clipboard = null;
+        protected static List<DialogueLine> clipboard = null;
 
         [ContextMenu("Copy")]
         private void CopyLines() {
-            clipboard = (ReorderableDialogueList)lines.Clone();
+            if (clipboard == null)
+                clipboard = new List<DialogueLine>();
+            else
+                clipboard.Clear();
+            clipboard.AddRange(lines);
         }
 
         [ContextMenu("Paste")]
         private void PasteLines() {
-            if (clipboard == null)
+            if (clipboard == null || clipboard.Count < 1)
                 return;
             UnityEditor.Undo.RecordObject(this, $"Pasted Dialogue Lines ({name})");
-            lines = (ReorderableDialogueList)clipboard.Clone();
+            lines.Clear();
+            lines.AddRange(clipboard);
             UnityEditor.EditorUtility.SetDirty(this);
         }
 #endif
-        [Reorderable] public ReorderableDialogueList lines;
+        public List<DialogueLine> lines;
 
         protected void CopyFrom(Dialogue otherDialogue) {
-            otherDialogue.lines = (ReorderableDialogueList)otherDialogue.lines.Clone();
+            lines.Clear();
+            lines.AddRange(otherDialogue.lines);
         }
 
         public virtual object Clone() {

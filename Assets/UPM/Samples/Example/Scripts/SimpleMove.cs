@@ -27,7 +27,7 @@ namespace Fog.Dialogue.Samples {
 
         public void BlockMovement() {
             canMove = false;
-            rigid.velocity = Vector2.zero;
+            rigid.linearVelocity = Vector2.zero;
         }
 
         public void AllowMovement() {
@@ -38,9 +38,9 @@ namespace Fog.Dialogue.Samples {
             if (canMove) {
                 Vector2 speed = movementAction.action.ReadValue<Vector2>();
                 speed *= moveSpeed;
-                rigid.velocity = speed;
+                rigid.linearVelocity = speed;
             } else {
-                rigid.velocity = Vector2.zero;
+                rigid.linearVelocity = Vector2.zero;
             }
         }
     }

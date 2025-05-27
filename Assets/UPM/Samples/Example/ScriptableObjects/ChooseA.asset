@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: ChooseA
   m_EditorClassIdentifier: 
   lines:
-    array:
-    - speaker: {fileID: 11400000, guid: 975b2c08788ba4543874afd4c71eacad, type: 2}
-      text: You chose A
+  - speaker: {fileID: 11400000, guid: 975b2c08788ba4543874afd4c71eacad, type: 2}
+    text: You chose A
