@@ -3,14 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Fog.Dialogue {
-    [RequireComponent(typeof(Mask)), RequireComponent(typeof(Image)), RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(Mask))]
+    [RequireComponent(typeof(Image))]
+    [RequireComponent(typeof(RectTransform))]
     public class DialogueScrollPanel : ScrollRect {
         public bool smoothScrolling;
         public float scrollSpeed;
-        [SerializeField] private GameObject scrollUpIndicator = null;
-        [SerializeField] private GameObject scrollDownIndicator = null;
-        [SerializeField] private GameObject skipIndicator = null;
-        private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
+        [SerializeField] private GameObject scrollUpIndicator;
+        [SerializeField] private GameObject scrollDownIndicator;
+        [SerializeField] private GameObject skipIndicator;
+        private readonly WaitForEndOfFrame waitForEndOfFrame = new();
         private float ContentHeight => content.rect.height;
         public float ViewportHeight => viewport.rect.height;
 
@@ -33,6 +35,36 @@ namespace Fog.Dialogue {
             verticalScrollbarSpacing = 1f;
             verticalScrollbarVisibility = ScrollbarVisibility.AutoHideAndExpandViewport;
             onValueChanged = null;
+        }
+
+        protected new void Start() {
+            base.Start();
+        }
+
+        protected override void LateUpdate() {
+            base.LateUpdate();
+            if (scrollUpIndicator != null) {
+                scrollUpIndicator.SetActive(IsVerticalPositionLowerThan(1.0f) &&
+                                            ContentHeight - ViewportHeight > Mathf.Epsilon);
+            }
+            if (scrollDownIndicator != null) {
+                scrollDownIndicator.SetActive(IsVerticalPositionHigherThan(0f) &&
+                                              ContentHeight - ViewportHeight > Mathf.Epsilon);
+            }
+        }
+
+        protected override void OnEnable() {
+            base.OnEnable();
+            if (skipIndicator != null) skipIndicator.SetActive(true);
+            if (scrollUpIndicator != null) scrollUpIndicator.SetActive(false);
+            if (scrollDownIndicator != null) scrollDownIndicator.SetActive(false);
+        }
+
+        protected override void OnDisable() {
+            if (skipIndicator != null) skipIndicator.SetActive(false);
+            if (scrollUpIndicator != null) scrollUpIndicator.SetActive(false);
+            if (scrollDownIndicator != null) scrollDownIndicator.SetActive(false);
+            base.OnDisable();
         }
 
         public float NormalizedTopPosition(RectTransform rect) {
@@ -78,8 +110,7 @@ namespace Fog.Dialogue {
         }
 
         public void JumpToPosition(float targetNormalPosition) {
-            if (smoothScrolling)
-                StopAllCoroutines();
+            if (smoothScrolling) StopAllCoroutines();
             Canvas.ForceUpdateCanvases();
             verticalNormalizedPosition = Mathf.Clamp(targetNormalPosition, 0f, 1f);
         }
@@ -97,77 +128,46 @@ namespace Fog.Dialogue {
             if (smoothScrolling) {
                 StopAllCoroutines();
                 StartCoroutine(ScrollingToPosition(targetNormalPosition));
-            } else {
+            } else
                 JumpToPosition(targetNormalPosition);
-            }
         }
 
         private IEnumerator ScrollingToPosition(float targetNormalPosition) {
-            if (IsVerticalPositionHigherThan(targetNormalPosition)) {
+            if (IsVerticalPositionHigherThan(targetNormalPosition))
                 yield return ScrollingDown(targetNormalPosition);
-            } else if (IsVerticalPositionLowerThan(targetNormalPosition)) {
-                yield return ScrollingUp(targetNormalPosition);
-            }
+            else if (IsVerticalPositionLowerThan(targetNormalPosition)) yield return ScrollingUp(targetNormalPosition);
         }
 
         private IEnumerator ScrollingUp(float targetPosition) {
             yield return waitForEndOfFrame;
+
             while (IsVerticalPositionLowerThan(targetPosition)) {
-                verticalNormalizedPosition += (Time.deltaTime * scrollSpeed * 10) / ContentHeight;
+                verticalNormalizedPosition += Time.deltaTime * scrollSpeed * 10 / ContentHeight;
                 yield return waitForEndOfFrame;
             }
+
             verticalNormalizedPosition = 1f;
             velocity = Vector2.zero;
         }
 
         private IEnumerator ScrollingDown(float targetPosition) {
             yield return waitForEndOfFrame;
+
             while (IsVerticalPositionHigherThan(targetPosition)) {
-                verticalNormalizedPosition -= (Time.deltaTime * scrollSpeed * 10) / ContentHeight;
+                verticalNormalizedPosition -= Time.deltaTime * scrollSpeed * 10 / ContentHeight;
                 yield return waitForEndOfFrame;
             }
+
             verticalNormalizedPosition = 0f;
             velocity = Vector2.zero;
         }
 
         public bool IsVerticalPositionLowerThan(float value) {
-            return verticalNormalizedPosition < (value - Mathf.Epsilon);
+            return verticalNormalizedPosition < value - Mathf.Epsilon;
         }
 
         public bool IsVerticalPositionHigherThan(float value) {
-            return verticalNormalizedPosition > (value + Mathf.Epsilon);
-        }
-
-        protected new void Start() {
-            base.Start();
-        }
-
-        protected override void OnEnable() {
-            base.OnEnable();
-            if (skipIndicator != null)
-                skipIndicator.SetActive(true);
-            if (scrollUpIndicator != null)
-                scrollUpIndicator.SetActive(false);
-            if (scrollDownIndicator != null)
-                scrollDownIndicator.SetActive(false);
-        }
-
-        protected override void OnDisable() {
-            if (skipIndicator != null)
-                skipIndicator.SetActive(false);
-            if (scrollUpIndicator != null)
-                scrollUpIndicator.SetActive(false);
-            if (scrollDownIndicator != null)
-                scrollDownIndicator.SetActive(false);
-            base.OnDisable();
-        }
-
-        protected override void LateUpdate() {
-            base.LateUpdate();
-            if (scrollUpIndicator != null)
-                scrollUpIndicator.SetActive(IsVerticalPositionLowerThan(1.0f) && (ContentHeight - ViewportHeight > Mathf.Epsilon));
-            if (scrollDownIndicator != null)
-                scrollDownIndicator.SetActive(IsVerticalPositionHigherThan(0f) && (ContentHeight - ViewportHeight > Mathf.Epsilon));
+            return verticalNormalizedPosition > value + Mathf.Epsilon;
         }
     }
 }

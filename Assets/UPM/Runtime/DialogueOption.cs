@@ -8,15 +8,14 @@ namespace Fog.Dialogue {
     public class DialogueOption : MonoBehaviour {
         [SerializeField] private TextMeshProUGUI textField;
         [SerializeField] private Image focusIndicator;
-        public Dialogue NextDialogue { get; private set; }
+        public UnityAction OnExit;
+        public UnityAction OnFocus;
 
         public UnityAction OnSelect = null;
-        public UnityAction OnFocus = null;
-        public UnityAction OnExit = null;
+        public Dialogue NextDialogue { get; private set; }
 
         private void Awake() {
-            if (!focusIndicator)
-                return;
+            if (!focusIndicator) return;
 
             focusIndicator.enabled = false;
             OnFocus += ToggleFocus;
@@ -29,8 +28,7 @@ namespace Fog.Dialogue {
         }
 
         protected virtual void ToggleFocus() {
-            if (focusIndicator)
-                focusIndicator.enabled = !focusIndicator.enabled;
+            if (focusIndicator) focusIndicator.enabled = !focusIndicator.enabled;
         }
     }
 }

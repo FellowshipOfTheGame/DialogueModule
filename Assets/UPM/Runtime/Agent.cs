@@ -5,34 +5,17 @@ using UnityEngine.InputSystem;
 namespace Fog.Dialogue {
     [RequireComponent(typeof(Collider2D))]
     public class Agent : MonoBehaviour {
-        #region Singleton
-        public static Agent Instance { get; private set; } = null;
-        public void Awake() {
-            if (Instance) {
-                Destroy(this);
-                return;
-            }
-            Instance = this;
-            nFramesCooldown = Mathf.Max(nFramesCooldown, 1);
-        }
-        public void OnDestroy() {
-            if (Instance == this) {
-                Instance = null;
-            }
-        }
-        #endregion
-
         [SerializeField] private int maxInteractions = 1;
         [SerializeField] private int nFramesCooldown = 5;
-        private int wait;
-        private bool IsCooldownTimerOver => wait <= 0;
-        [SerializeField, HideInInspector] private bool canInteract;
-        public bool CanInteract => canInteract;
-        private bool isProcessingInput;
-        int interactedCount;
+        [SerializeField] [HideInInspector] private bool canInteract;
         [SerializeField] private InputActionReference interactAction;
 
-        public List<IInteractable> collidingInteractables = new List<IInteractable>();
+        public List<IInteractable> collidingInteractables = new();
+        private int interactedCount;
+        private bool isProcessingInput;
+        private int wait;
+        private bool IsCooldownTimerOver => wait <= 0;
+        public bool CanInteract => canInteract;
 
         private void Reset() {
             maxInteractions = 1;
@@ -51,11 +34,12 @@ namespace Fog.Dialogue {
                 ResetInputCooldownTimer();
                 InteractIfPossible();
             }
+
             UpdateInputCooldownTimer();
         }
 
         private void UpdateInputCooldownTimer() {
-            wait = (wait <= 0) ? 0 : (wait - 1);
+            wait = wait <= 0 ? 0 : wait - 1;
         }
 
         private void ResetInputCooldownTimer() {
@@ -63,9 +47,8 @@ namespace Fog.Dialogue {
         }
 
         private void InteractIfPossible() {
-            if (isProcessingInput || !canInteract) {
-                return;
-            }
+            if (isProcessingInput || !canInteract) return;
+
             isProcessingInput = true;
             InteractWithAvailableInteractables();
             isProcessingInput = false;
@@ -74,11 +57,11 @@ namespace Fog.Dialogue {
         private void InteractWithAvailableInteractables() {
             interactedCount = 0;
             foreach (IInteractable interactable in collidingInteractables.ToArray()) {
-                if (interactedCount >= maxInteractions || !canInteract) {
-                    break;
-                }
+                if (interactedCount >= maxInteractions || !canInteract) break;
+
                 AttemptInteraction(interactable);
             }
+
             interactedCount = 0;
         }
 
@@ -86,9 +69,8 @@ namespace Fog.Dialogue {
             if (interactable != null) {
                 interactable.OnInteractAttempt();
                 interactedCount++;
-            } else {
+            } else
                 collidingInteractables.Remove(interactable);
-            }
         }
 
         public void BlockInteractions() {
@@ -99,5 +81,23 @@ namespace Fog.Dialogue {
             ResetInputCooldownTimer();
             canInteract = true;
         }
+
+        #region Singleton
+        public static Agent Instance { get; private set; }
+
+        public void Awake() {
+            if (Instance) {
+                Destroy(this);
+                return;
+            }
+
+            Instance = this;
+            nFramesCooldown = Mathf.Max(nFramesCooldown, 1);
+        }
+
+        public void OnDestroy() {
+            if (Instance == this) Instance = null;
+        }
+        #endregion
     }
 }

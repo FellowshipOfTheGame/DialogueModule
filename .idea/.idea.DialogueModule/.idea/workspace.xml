@@ -5,38 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8f7e9de-5599-484e-9640-1ff9ee6cfb59" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/MemorySettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/MultiplayerManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/HideInInspectorIfDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/HideInInspectorIfDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Agent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Agent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/BaseHideInInspectorIf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/BaseHideInInspectorIf.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIf.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIfNot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIfNot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/ReorderableDialogueList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/ReorderableDialogueList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem/Inputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem/Inputs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/Choice.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/Choice.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/ChooseA.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/ChooseA.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/ChooseB.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/ChooseB.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/Hello World.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/Hello World.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/Lorem Ipsum.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/Lorem Ipsum.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/IInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/IInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.malee.reorderablelist@ac1f508240fb/Runtime/ReorderableArray.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/package.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -59,7 +75,8 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.14587852&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -127,6 +144,8 @@
       <workItem from="1748354337955" duration="2444000" />
       <workItem from="1748361600936" duration="708000" />
       <workItem from="1748386520664" duration="372000" />
+      <workItem from="1748388010875" duration="10198000" />
+      <workItem from="1748472310350" duration="4724000" />
     </task>
     <servers />
   </component>
@@ -161,5 +180,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

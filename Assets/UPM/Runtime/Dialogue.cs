@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Fog.Dialogue {
@@ -7,28 +8,6 @@ namespace Fog.Dialogue {
     /// </summary>
     [CreateAssetMenu(fileName = "NewDialogue", menuName = "FoG/DialogueModule/Dialogue")]
     public class Dialogue : ScriptableObject {
-#if UNITY_EDITOR
-        protected static List<DialogueLine> clipboard = null;
-
-        [ContextMenu("Copy")]
-        private void CopyLines() {
-            if (clipboard == null)
-                clipboard = new List<DialogueLine>();
-            else
-                clipboard.Clear();
-            clipboard.AddRange(lines);
-        }
-
-        [ContextMenu("Paste")]
-        private void PasteLines() {
-            if (clipboard == null || clipboard.Count < 1)
-                return;
-            UnityEditor.Undo.RecordObject(this, $"Pasted Dialogue Lines ({name})");
-            lines.Clear();
-            lines.AddRange(clipboard);
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-#endif
         public List<DialogueLine> lines;
 
         protected void CopyFrom(Dialogue otherDialogue) {
@@ -43,15 +22,35 @@ namespace Fog.Dialogue {
         }
 
         public virtual void BeforeDialogue() {
-            if (Agent.Instance)
-                Agent.Instance.BlockInteractions();
+            if (Agent.Instance) Agent.Instance.BlockInteractions();
             DialogueHandler.instance.OnDialogueStart -= BeforeDialogue;
         }
 
         public virtual void AfterDialogue() {
-            if (Agent.Instance)
-                Agent.Instance.AllowInteractions();
+            if (Agent.Instance) Agent.Instance.AllowInteractions();
             DialogueHandler.instance.OnDialogueEnd -= AfterDialogue;
         }
+#if UNITY_EDITOR
+        private static List<DialogueLine> clipboard;
+
+        [ContextMenu("Copy")]
+        private void CopyLines() {
+            if (clipboard == null)
+                clipboard = new List<DialogueLine>();
+            else
+                clipboard.Clear();
+            clipboard.AddRange(lines);
+        }
+
+        [ContextMenu("Paste")]
+        private void PasteLines() {
+            if (clipboard == null || clipboard.Count < 1) return;
+
+            Undo.RecordObject(this, $"Pasted Dialogue Lines ({name})");
+            lines.Clear();
+            lines.AddRange(clipboard);
+            EditorUtility.SetDirty(this);
+        }
+#endif
     }
 }

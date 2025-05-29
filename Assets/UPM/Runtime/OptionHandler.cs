@@ -6,31 +6,45 @@ using UnityEngine.InputSystem;
 namespace Fog.Dialogue {
     [RequireComponent(typeof(AudioSource))]
     public class OptionHandler : MonoBehaviour {
-        [SerializeField] private DialogueScrollPanel scrollPanel = null;
-        [SerializeField] private RectTransform container = null;
-        [SerializeField] private RectTransform optionList = null;
-        [SerializeField] private GameObject optionPrefab = null;
+        [SerializeField] private DialogueScrollPanel scrollPanel;
+        [SerializeField] private RectTransform container;
+        [SerializeField] private RectTransform optionList;
+        [SerializeField] private GameObject optionPrefab;
         [SerializeField] private float inputCooldown = 0.1f;
         [SerializeField] private float activationTime = 0.5f;
         [SerializeField] private InputActionReference submitAction;
         [SerializeField] private InputActionReference directionsAction;
-        private float timer;
-        private bool IsTimerOver => timer > inputCooldown;
-        private AudioSource audioSource;
         [SerializeField] private AudioClip changeOption;
         [SerializeField] private AudioClip selectOption;
+        private AudioSource audioSource;
 
         private int currentOptionIndex = -1;
+        private readonly List<DialogueOption> options = new();
+        private float timer;
+        private bool IsTimerOver => timer > inputCooldown;
         private DialogueOption CurrentOption => options[currentOptionIndex];
-        private List<DialogueOption> options = new List<DialogueOption>();
 
         public bool IsActive { get; private set; }
-        private bool SubmitButtonIsPressed => submitAction.action.phase == InputActionPhase.Started || submitAction.action.phase == InputActionPhase.Performed;
+
+        private bool SubmitButtonIsPressed =>
+            submitAction.action.phase == InputActionPhase.Started ||
+            submitAction.action.phase == InputActionPhase.Performed;
 
         private void Awake() {
             audioSource = GetComponent<AudioSource>();
             Deactivate();
             ValidatePrefab();
+        }
+
+        private void Update() {
+            if (!IsActive) return;
+
+            if (IsTimerOver) {
+                CheckInputs();
+                ResetTimer();
+            }
+
+            UpdateTimer();
         }
 
         private void ValidatePrefab() {
@@ -48,9 +62,7 @@ namespace Fog.Dialogue {
         public void CreateOptions(DialogueOptionInfo[] infos) {
             if (infos.Length > 0) {
                 container.gameObject.SetActive(true);
-                foreach (DialogueOptionInfo info in infos) {
-                    CreateNewOption(info);
-                }
+                foreach (DialogueOptionInfo info in infos) CreateNewOption(info);
                 // This can be called from animation instead of coroutine, for better visual effect
                 StartCoroutine(DelayedActivate(activationTime));
             } else {
@@ -70,6 +82,7 @@ namespace Fog.Dialogue {
 
         private IEnumerator DelayedActivate(float delay) {
             yield return new WaitForSeconds(delay);
+
             Activate();
         }
 
@@ -91,71 +104,54 @@ namespace Fog.Dialogue {
             float normalizedTop = scrollPanel.NormalizedTopPosition(optionRect);
             float normalizedBottom = scrollPanel.NormalizedBottomPosition(optionRect);
 
-            if (scrollPanel.IsVerticalPositionLowerThan(normalizedTop) || scrollPanel.ViewportHeight <= optionRect.rect.height) {
+            if (scrollPanel.IsVerticalPositionLowerThan(normalizedTop) ||
+                scrollPanel.ViewportHeight <= optionRect.rect.height)
                 scrollPanel.ScrollToPosition(normalizedTop);
-            } else if (scrollPanel.IsVerticalPositionHigherThan(normalizedBottom)) {
+            else if (scrollPanel.IsVerticalPositionHigherThan(normalizedBottom))
                 scrollPanel.ScrollToPosition(normalizedBottom);
-            }
         }
 
         private void SelectOption() {
-            if (selectOption)
-                audioSource.PlayOneShot(selectOption);
+            if (selectOption) audioSource.PlayOneShot(selectOption);
             Deactivate();
             ResetTimer();
-            Dialogue selectedDialogue = (currentOptionIndex >= 0) ? CurrentOption.NextDialogue : null;
+            Dialogue selectedDialogue = currentOptionIndex >= 0 ? CurrentOption.NextDialogue : null;
             ClearOptionList();
             StartOrEndDialogue(selectedDialogue);
         }
 
         private static void StartOrEndDialogue(Dialogue selectedDialogue) {
-            if (selectedDialogue) {
+            if (selectedDialogue)
                 DialogueHandler.instance.StartDialogue(selectedDialogue);
-            } else {
+            else
                 DialogueHandler.instance.EndDialogueWithoutCallback();
-            }
         }
 
         private void ClearOptionList() {
-            foreach (RectTransform transform in optionList) {
-                Destroy(transform.gameObject);
-            }
+            foreach (RectTransform transform in optionList) Destroy(transform.gameObject);
             options.Clear();
             currentOptionIndex = -1;
         }
 
-        private void Update() {
-            if (!IsActive)
-                return;
-
-            if (IsTimerOver) {
-                CheckInputs();
-                ResetTimer();
-            }
-            UpdateTimer();
-        }
-
         private void CheckInputs() {
-            if (SubmitButtonIsPressed) {
+            if (SubmitButtonIsPressed)
                 CurrentOption.OnSelect?.Invoke();
-            } else {
+            else
                 CheckSelectionInput();
-            }
         }
 
         private void CheckSelectionInput() {
             float axisValue = directionsAction.action.ReadValue<Vector2>().y;
-            float input = axisValue * (-1f);
-            if (input == 0)
-                return;
-            int newOptionIndex = Mathf.Clamp(currentOptionIndex + ((input > 0) ? 1 : -1), 0, options.Count - 1);
+            float input = axisValue * -1f;
+            if (input == 0) return;
+
+            int newOptionIndex = Mathf.Clamp(currentOptionIndex + (input > 0 ? 1 : -1), 0, options.Count - 1);
             FocusNewOptionIfNecessary(newOptionIndex);
             ShowHeaderIfNecessary(input);
         }
 
         private void FocusNewOptionIfNecessary(int newOptionIndex) {
-            if (newOptionIndex == currentOptionIndex)
-                return;
+            if (newOptionIndex == currentOptionIndex) return;
 
             CurrentOption.OnExit?.Invoke();
             currentOptionIndex = newOptionIndex;
@@ -163,8 +159,7 @@ namespace Fog.Dialogue {
         }
 
         private void ShowHeaderIfNecessary(float input) {
-            if (input > 0 && currentOptionIndex == 0)
-                scrollPanel.ScrollToStart();
+            if (input > 0 && currentOptionIndex == 0) scrollPanel.ScrollToStart();
         }
 
         private void UpdateTimer() {

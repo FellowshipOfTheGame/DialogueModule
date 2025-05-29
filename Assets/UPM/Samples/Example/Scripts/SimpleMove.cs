@@ -4,14 +4,14 @@ using UnityEngine.InputSystem;
 namespace Fog.Dialogue.Samples {
     [RequireComponent(typeof(Rigidbody2D))]
     public class SimpleMove : MonoBehaviour {
-        [SerializeField, Range(0, 100)] private float moveSpeed;
-        public bool canMove = true;
         public static SimpleMove instance = null;
-        [SerializeField] InputActionReference movementAction;
+        [SerializeField] [Range(0, 100)] private float moveSpeed;
+        public bool canMove = true;
+        [SerializeField] private InputActionReference movementAction;
         private Rigidbody2D rigid;
 
-        void Awake() {
-            if (instance != null) {
+        private void Awake() {
+            if (instance) {
                 Destroy(this);
                 return;
             }
@@ -20,9 +20,17 @@ namespace Fog.Dialogue.Samples {
             rigid = GetComponent<Rigidbody2D>();
         }
 
-        void OnDestroy() {
-            if (instance == this)
-                instance = null;
+        private void Update() {
+            if (canMove) {
+                Vector2 speed = movementAction.action.ReadValue<Vector2>();
+                speed *= moveSpeed;
+                rigid.linearVelocity = speed;
+            } else
+                rigid.linearVelocity = Vector2.zero;
+        }
+
+        private void OnDestroy() {
+            if (instance == this) instance = null;
         }
 
         public void BlockMovement() {
@@ -32,16 +40,6 @@ namespace Fog.Dialogue.Samples {
 
         public void AllowMovement() {
             canMove = true;
-        }
-
-        void Update() {
-            if (canMove) {
-                Vector2 speed = movementAction.action.ReadValue<Vector2>();
-                speed *= moveSpeed;
-                rigid.linearVelocity = speed;
-            } else {
-                rigid.linearVelocity = Vector2.zero;
-            }
         }
     }
 }

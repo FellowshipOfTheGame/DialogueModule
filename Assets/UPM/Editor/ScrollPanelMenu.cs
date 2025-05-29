@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,13 @@ namespace Fog.Dialogue {
         [MenuItem("GameObject/UI/FOG.Dialogue - ScrollPanel", false, 49)]
         private static void CreateScrollPanel(MenuCommand menuCommand) {
             // Create a custom game object
-            GameObject panelObj = new GameObject("Dialogue Scroll Panel");
+            GameObject panelObj = new("Dialogue Scroll Panel");
             // Register the creation in the undo system
             Undo.RegisterCreatedObjectUndo(panelObj, "Create " + panelObj.name);
             // Cria um Canvas se ele nao existir
             Canvas canvas = FindObjectOfType<Canvas>();
             if (!canvas) {
-                GameObject canvasObj = new GameObject("Canvas", typeof(CanvasScaler));
+                GameObject canvasObj = new("Canvas", typeof(CanvasScaler));
                 Undo.RegisterCreatedObjectUndo(canvasObj, "Create " + canvasObj.name);
                 canvas = canvasObj.GetComponent<Canvas>();
                 CanvasScaler canvasScaler = canvasObj.GetComponent<CanvasScaler>();
@@ -26,8 +27,11 @@ namespace Fog.Dialogue {
                 canvas.sortingOrder = 10;
                 canvas.targetDisplay = 0;
                 canvas.planeDistance = 100f;
-                canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.Normal | AdditionalCanvasShaderChannels.Tangent | AdditionalCanvasShaderChannels.TexCoord1;
+                canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.Normal |
+                                                  AdditionalCanvasShaderChannels.Tangent |
+                                                  AdditionalCanvasShaderChannels.TexCoord1;
             }
+
             // Adiciona o panel como filho do canvas e seta propriedades iniciais
             panelObj.transform.SetParent(canvas.transform);
             panelObj.AddComponent<DialogueScrollPanel>();
@@ -42,22 +46,22 @@ namespace Fog.Dialogue {
             img.type = Image.Type.Sliced;
             img.fillCenter = true;
             int count = 0;
-            Debug.Log("count = " + (count++) + ":  posZ = " + img.transform.localPosition.z);
+            Debug.Log("count = " + count++ + ":  posZ = " + img.transform.localPosition.z);
             img.rectTransform.pivot = new Vector2(0.5f, 0f);
-            Debug.Log("count = " + (count++) + ":  posZ = " + img.transform.localPosition.z);
+            Debug.Log("count = " + count++ + ":  posZ = " + img.transform.localPosition.z);
             img.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0f, 0);
-            Debug.Log("count = " + (count++) + ":  posZ = " + img.transform.localPosition.z);
+            Debug.Log("count = " + count++ + ":  posZ = " + img.transform.localPosition.z);
             img.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, 0);
-            Debug.Log("count = " + (count++) + ":  posZ = " + img.transform.localPosition.z);
+            Debug.Log("count = " + count++ + ":  posZ = " + img.transform.localPosition.z);
             img.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0f, 150f);
-            Debug.Log("count = " + (count++) + ":  posZ = " + img.transform.localPosition.z);
+            Debug.Log("count = " + count++ + ":  posZ = " + img.transform.localPosition.z);
             img.rectTransform.anchorMin = new Vector2(0f, 0f);
             img.rectTransform.anchorMax = new Vector2(1f, 0f);
-            Debug.Log("count = " + (count++) + ":  posZ = " + img.transform.localPosition.z);
+            Debug.Log("count = " + count++ + ":  posZ = " + img.transform.localPosition.z);
             //img.rectTransform.position = new Vector3(img.rectTransform.position.x, 0f, img.rectTransform.position.z);
             img.rectTransform.localScale = new Vector3(1f, 1f, 1f);
             // Adiciona o objeto de viewport como filho do panel
-            GameObject viewObj = new GameObject("Viewport");
+            GameObject viewObj = new("Viewport");
             Undo.RegisterCreatedObjectUndo(viewObj, "Create " + viewObj.name);
             viewObj.transform.SetParent(panelObj.transform);
             viewObj.AddComponent<Image>();
@@ -85,21 +89,22 @@ namespace Fog.Dialogue {
             img.rectTransform.localScale = new Vector3(1f, 1f, 1f);
             // Adiciona o objeto de content como filho do viewport
             // O content por padrao contem um TextMeshProGUI
-            GameObject contentObj = new GameObject("Content");
+            GameObject contentObj = new("Content");
             Undo.RegisterCreatedObjectUndo(contentObj, "Create " + contentObj.name);
             contentObj.transform.SetParent(viewObj.transform);
             contentObj.AddComponent<ContentSizeFitter>();
-            contentObj.AddComponent<TMPro.TextMeshProUGUI>();
+            contentObj.AddComponent<TextMeshProUGUI>();
             contentObj.GetComponent<ContentSizeFitter>().horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
             contentObj.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-            TMPro.TextMeshProUGUI textMesh = contentObj.GetComponent<TMPro.TextMeshProUGUI>();
-            textMesh.transform.localPosition = new Vector3(img.transform.localPosition.x, img.transform.localPosition.y, 0f);
+            TextMeshProUGUI textMesh = contentObj.GetComponent<TextMeshProUGUI>();
+            textMesh.transform.localPosition =
+                new Vector3(img.transform.localPosition.x, img.transform.localPosition.y, 0f);
             // textMesh.font = TMPro.TMP_FontAsset.defaultFontAsset;
             textMesh.fontSize = 21;
             textMesh.color = Color.black;
-            textMesh.alignment = TMPro.TextAlignmentOptions.TopJustified;
+            textMesh.alignment = TextAlignmentOptions.TopJustified;
             textMesh.wordWrappingRatios = 0f;
-            textMesh.overflowMode = TMPro.TextOverflowModes.ScrollRect;
+            textMesh.overflowMode = TextOverflowModes.ScrollRect;
             textMesh.margin = new Vector4(3, 20, 3, 1);
             panelObj.GetComponent<DialogueScrollPanel>().content = textMesh.rectTransform;
             textMesh.rectTransform.pivot = new Vector2(0f, 1f);
@@ -114,10 +119,11 @@ namespace Fog.Dialogue {
             // Configura o DialogueHandler da cena (cria se necessario)
             DialogueHandler handler = FindObjectOfType<DialogueHandler>();
             if (!handler) {
-                GameObject go = new GameObject("Dialogue Handler", typeof(DialogueHandler));
+                GameObject go = new("Dialogue Handler", typeof(DialogueHandler));
                 Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
                 handler = go.GetComponent<DialogueHandler>();
             }
+
             handler.dialogueText = textMesh;
             handler.useTitles = true;
             handler.titleText = textMesh;

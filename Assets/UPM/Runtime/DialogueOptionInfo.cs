@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 
 namespace Fog.Dialogue {
-    [System.Serializable]
+    [Serializable]
     public struct DialogueOptionInfo {
         [TextArea] public string text;
         public Dialogue nextDialogue;

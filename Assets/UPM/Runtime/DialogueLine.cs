@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Fog.Dialogue {
@@ -6,11 +7,13 @@ namespace Fog.Dialogue {
     ///     There are getters but no setter - To prevent edit from outside scripts, overwriting dialogue made by the writers
     ///     The only way to edit dialogue is from the inspector, if you want to change this, just add a setter to the property
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class DialogueLine {
         [Header("Dialogue Properties")]
-        [SerializeField] private DialogueEntity speaker = null;
-        [SerializeField, TextArea(3, 5)] private string text = null;
+
+        [SerializeField] private DialogueEntity speaker;
+
+        [SerializeField] [TextArea(3, 5)] private string text;
 
         public DialogueLine(DialogueLine otherLine) {
             speaker = otherLine.speaker;
@@ -22,13 +25,13 @@ namespace Fog.Dialogue {
             this.text = $"{text}";
         }
 
+        public virtual string Title => speaker == null ? null : speaker.DialogueName;
+        public virtual Color Color => speaker == null ? Color.white : speaker.DialogueColor;
+        public virtual Sprite Portrait => speaker == null ? null : speaker.DialoguePortrait;
+        public virtual string Text => text;
+
         public virtual object Clone() {
             return new DialogueLine(this);
         }
-
-        public virtual string Title => (speaker == null) ? null : speaker.DialogueName;
-        public virtual Color Color => (speaker == null) ? Color.white : speaker.DialogueColor;
-        public virtual Sprite Portrait => (speaker == null) ? null : speaker.DialoguePortrait;
-        public virtual string Text => text;
     }
 }
