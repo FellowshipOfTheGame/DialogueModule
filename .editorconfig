@@ -1,12 +1,12 @@
-# Remove the line below if you want to inherit .editorconfig settings from higher directories
 root = true
+# Remove the line below if you want to inherit .editorconfig settings from higher directories
 
 [*]
 # Suppress redundant warnings
-dotnet_diagnostic.IDE0051.severity = none
+dotnet_diagnostic.ide0051.severity = none
 
 # IDE0130: Namespace does not match folder structure
-dotnet_diagnostic.IDE0130.severity = none
+dotnet_diagnostic.ide0130.severity = none
 
 charset = utf-8
 end_of_line = crlf
@@ -23,6 +23,9 @@ ij_formatter_tags_enabled = true
 ij_smart_tabs = false
 ij_visual_guides =
 ij_wrap_on_typing = false
+
+# ReSharper properties
+resharper_keep_existing_attribute_arrangement = true
 
 [*.css]
 ij_css_align_closing_brace_with_properties = false

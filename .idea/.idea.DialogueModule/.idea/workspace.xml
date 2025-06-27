@@ -8,28 +8,15 @@
       <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/HideInInspectorIfDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/HideInInspectorIfDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Agent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Agent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/BaseHideInInspectorIf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/BaseHideInInspectorIf.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIf.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIfNot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Attributes/HideInInspectorIfNot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/IInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/IInteractable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Option.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Option.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +33,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18f5482d17338a7bbdeae155929167e4a8be10b5d2e9aed96c2562ed98f34f/System.Collections.ObjectModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Editor/ScrollPanelMenu.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/Dialogue.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueLine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueLine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/InteractableExample.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Samples~/SimpleDemo/SimpleController_UsingActionAsset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@349678cb680f/Editor/UGUI/UI/ScrollRectEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -69,13 +63,16 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat Code&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.14587852&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -145,8 +142,31 @@
       <workItem from="1748361600936" duration="708000" />
       <workItem from="1748386520664" duration="372000" />
       <workItem from="1748388010875" duration="10198000" />
-      <workItem from="1748472310350" duration="4724000" />
+      <workItem from="1748472310350" duration="5144000" />
+      <workItem from="1748614309059" duration="1913000" />
+      <workItem from="1748785515421" duration="14966000" />
+      <workItem from="1749252731959" duration="99000" />
+      <workItem from="1749752283407" duration="1583000" />
+      <workItem from="1750209347960" duration="3349000" />
+      <workItem from="1750272994965" duration="15000" />
+      <workItem from="1750275286532" duration="4088000" />
+      <workItem from="1750449058768" duration="11669000" />
+      <workItem from="1750531653400" duration="4678000" />
+      <workItem from="1750716028206" duration="2430000" />
+      <workItem from="1750802317379" duration="1926000" />
+      <workItem from="1750863465875" duration="3780000" />
+      <workItem from="1750886953364" duration="4989000" />
+      <workItem from="1750970539301" duration="13693000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated editorconfig and ran CodeCleanup">
+      <option name="closed" value="true" />
+      <created>1748484890830</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748484890830</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +182,8 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Updated editorconfig and ran CodeCleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated editorconfig and ran CodeCleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -178,6 +200,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs</url>
+          <line>39</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" containingFunctionPresentation="Constructor 'DialogueLine'">
+            <startOffsets>
+              <option value="1519" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1520" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

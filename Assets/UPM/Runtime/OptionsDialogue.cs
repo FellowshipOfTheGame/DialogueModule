@@ -11,8 +11,9 @@ namespace Fog.Dialogue {
 
         protected void CopyFrom(OptionsDialogue otherDialogue) {
             base.CopyFrom(otherDialogue);
-            question = (DialogueLine)otherDialogue.question.Clone();
-            options = (DialogueOptionInfo[])otherDialogue.options.Clone();
+            question.CopyFrom(otherDialogue.question);
+            options = new DialogueOptionInfo[otherDialogue.options.Length];
+            otherDialogue.options.CopyTo(options, 0);
         }
 
         public override object Clone() {
@@ -25,7 +26,6 @@ namespace Fog.Dialogue {
             base.AfterDialogue();
             Agent.Instance.BlockInteractions();
             DialogueHandler.instance.DisplayOptions(question, options);
-            DialogueHandler.instance.OnDialogueEnd -= AfterDialogue;
         }
     }
 }

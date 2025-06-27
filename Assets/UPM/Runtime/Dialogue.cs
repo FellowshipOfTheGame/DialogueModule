@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,7 +9,32 @@ namespace Fog.Dialogue {
     /// </summary>
     [CreateAssetMenu(fileName = "NewDialogue", menuName = "FoG/DialogueModule/Dialogue")]
     public class Dialogue : ScriptableObject {
-        public List<DialogueLine> lines;
+        public List<DialogueLine> lines = new();
+        protected static readonly ReadOnlyDictionary<string, DialogueTextTag.Constructor> TMProTagFactory =
+            new ReadOnlyDictionary<string, DialogueTextTag.Constructor>(BuildTMProTagFactory());
+
+        public static Dictionary<string, DialogueTextTag.Constructor> BuildTMProTagFactory() {
+            Dictionary<string, DialogueTextTag.Constructor> dict = new() {
+                { "align", SimpleTextTag.CreateSimpleTag }, { "allcaps", SimpleTextTag.CreateSimpleTag },
+                { "alpha", SimpleColoredTag.CreateColoredTag }, { "b", SimpleTextTag.CreateSimpleTag },
+                { "br", SimpleTextTag.CreateSimpleTag }, { "color", SimpleColoredTag.CreateColoredTag },
+                { "cspace", SimpleTextTag.CreateSimpleTag }, { "font", SimpleTextTag.CreateSimpleTag },
+                { "font-weight", SimpleTextTag.CreateSimpleTag }, { "gradient", SimpleTextTag.CreateSimpleTag },
+                { "i", SimpleTextTag.CreateSimpleTag }, { "indent", SimpleTextTag.CreateSimpleTag },
+                { "line-height", SimpleTextTag.CreateSimpleTag }, { "line-indent", SimpleTextTag.CreateSimpleTag },
+                { "lowercase", SimpleTextTag.CreateSimpleTag }, { "margin", SimpleTextTag.CreateSimpleTag },
+                { "mspace", SimpleTextTag.CreateSimpleTag }, { "nobr", SimpleTextTag.CreateSimpleTag },
+                { "page", SimpleTextTag.CreateSimpleTag }, { "rotate", SimpleTextTag.CreateSimpleTag },
+                { "s", SimpleTextTag.CreateSimpleTag }, { "size", SimpleTextTag.CreateSimpleTag },
+                { "smallcaps", SimpleTextTag.CreateSimpleTag }, { "space", SimpleTextTag.CreateSimpleTag },
+                { "sprite", SimpleColoredTag.CreateColoredTag }, { "strikethrough", SimpleTextTag.CreateSimpleTag },
+                { "style", SimpleTextTag.CreateSimpleTag }, { "sub", SimpleTextTag.CreateSimpleTag },
+                { "sup", SimpleTextTag.CreateSimpleTag }, { "u", SimpleTextTag.CreateSimpleTag },
+                { "uppercase", SimpleTextTag.CreateSimpleTag }, { "voffset", SimpleTextTag.CreateSimpleTag },
+                { "width", SimpleTextTag.CreateSimpleTag },
+            };
+            return dict;
+        }
 
         protected void CopyFrom(Dialogue otherDialogue) {
             lines.Clear();
@@ -23,13 +49,25 @@ namespace Fog.Dialogue {
 
         public virtual void BeforeDialogue() {
             if (Agent.Instance) Agent.Instance.BlockInteractions();
-            DialogueHandler.instance.OnDialogueStart -= BeforeDialogue;
         }
 
         public virtual void AfterDialogue() {
             if (Agent.Instance) Agent.Instance.AllowInteractions();
-            DialogueHandler.instance.OnDialogueEnd -= AfterDialogue;
         }
+
+        public virtual void StartDialogue() {
+            DialogueHandler.instance.StartDialogue(this);
+        }
+
+        [ContextMenu("Parse Tags (TMPro default)")]
+        protected void ParseLineTags() {
+            if (lines.Count < 1) return;
+
+            foreach (DialogueLine dialogueLine in lines) {
+                dialogueLine.ParseTags(TMProTagFactory);
+            }
+        }
+
 #if UNITY_EDITOR
         private static List<DialogueLine> clipboard;
 

@@ -12,7 +12,7 @@ namespace Fog.Dialogue {
             // Register the creation in the undo system
             Undo.RegisterCreatedObjectUndo(panelObj, "Create " + panelObj.name);
             // Cria um Canvas se ele nao existir
-            Canvas canvas = FindObjectOfType<Canvas>();
+            Canvas canvas = FindFirstObjectByType<Canvas>();
             if (!canvas) {
                 GameObject canvasObj = new("Canvas", typeof(CanvasScaler));
                 Undo.RegisterCreatedObjectUndo(canvasObj, "Create " + canvasObj.name);
@@ -22,7 +22,7 @@ namespace Fog.Dialogue {
                 canvasScaler.scaleFactor = 1f;
                 canvasScaler.referencePixelsPerUnit = 100f;
                 canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.worldCamera = FindObjectOfType<Camera>();
+                canvas.worldCamera = FindFirstObjectByType<Camera>();
                 canvas.pixelPerfect = true;
                 canvas.sortingOrder = 10;
                 canvas.targetDisplay = 0;
@@ -117,7 +117,7 @@ namespace Fog.Dialogue {
             textMesh.rectTransform.sizeDelta = new Vector2(0f, 0f);
             textMesh.rectTransform.localScale = new Vector3(1f, 1f, 1f);
             // Configura o DialogueHandler da cena (cria se necessario)
-            DialogueHandler handler = FindObjectOfType<DialogueHandler>();
+            DialogueHandler handler = FindFirstObjectByType<DialogueHandler>();
             if (!handler) {
                 GameObject go = new("Dialogue Handler", typeof(DialogueHandler));
                 Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);

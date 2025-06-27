@@ -14,26 +14,23 @@ namespace Fog.Dialogue {
         public static bool debugActivated = false;
 
         [Header("References")]
-
         [Tooltip("Reference to the TMPro text component of the main dialogue box.")]
         public TextMeshProUGUI dialogueText;
 
         [Tooltip("Whether or not the dialogue has a title or character name display.")]
         public bool useTitles;
-
         [Tooltip("Reference to the TMPro text component of the title/name display.")]
         [HideInInspectorIfNot(nameof(useTitles))]
         public TextMeshProUGUI titleText;
 
         [Tooltip("Whether or not the dialogue has a portrait.")]
         public bool usePortraits;
-
         [Tooltip("Reference to the Image component of the portrait to display.")]
         [HideInInspectorIfNot(nameof(usePortraits))]
         public Image portrait;
 
         [Tooltip(
-            "Current dialogue script to be displayed. To create a new dialogue, go to Assets->Create->Anathema->Dialogue.")]
+            "Current dialogue script to be displayed. To create a new dialogue, go to Assets->Create->FoG->DialogueModule->Dialogue.")]
         public Dialogue dialogue;
 
         [Tooltip("Game object that contains the chat box to be enabled/disabled")]
@@ -44,22 +41,17 @@ namespace Fog.Dialogue {
 
         [Space(10)]
         [Header("Input")]
-
         [SerializeField]
         private InputActionReference directionsAction;
-
         [SerializeField] private InputActionReference submitAction;
         [SerializeField] private InputActionReference cancelAction;
 
         [Space(10)]
         [Header("Settings")]
-
         [Tooltip("Whether or not the characters are going to be displayed one at a time.")]
         public bool useTypingEffect;
-
         [HideInInspectorIfNot(nameof(useTypingEffect))] [Range(1, 60)]
         public int framesBetweenCharacters;
-
         [Tooltip(
             "If true, trying to skip dialogue will first fill in the entire dialogue line and then skip if prompted again, if false it will skip right away.")]
         [HideInInspectorIfNot(nameof(useTypingEffect))]
@@ -68,7 +60,6 @@ namespace Fog.Dialogue {
         [Tooltip(
             "Whether or not, after filling in the entire text, the dialogue skips to the next line automatically.")]
         public bool autoSkip;
-
         [HideInInspectorIfNot(nameof(autoSkip))]
         public float timeUntilSkip;
 
@@ -80,15 +71,15 @@ namespace Fog.Dialogue {
         public bool isSingleton;
 
         protected DialogueLine currentLine;
-        protected string currentTitle;
+        protected string currentTitle = string.Empty;
         protected Color defaultPanelColor;
-        private readonly Queue<DialogueLine> dialogueLines = new();
-        private bool isLineDone;
+        protected readonly Queue<DialogueLine> dialogueLines = new();
+        protected bool isLineDone = true;
         protected StringBuilder stringBuilder;
         public bool IsActive { get; protected set; }
 
         private void Start() {
-            Image panelImg = dialogueBox != null ? dialogueBox.GetComponent<Image>() : null;
+            Image panelImg = dialogueBox ? dialogueBox.GetComponent<Image>() : null;
             defaultPanelColor = panelImg ? panelImg.color : Color.white;
             stringBuilder = new StringBuilder();
         }
@@ -128,16 +119,17 @@ namespace Fog.Dialogue {
             EndDialogue();
         }
 
-        public void StartDialogue(Dialogue dialogue) {
-            OnDialogueStart += dialogue.BeforeDialogue;
-            OnDialogueEnd += dialogue.AfterDialogue;
-            this.dialogue = dialogue;
-            StartDialogue();
+        public void StartDialogue(Dialogue newDialogue) {
+            EndActiveDialogue();
+            dialogue = newDialogue;
+            StartCurrentDialogue();
         }
 
-        public void StartDialogue() {
-            EndActiveDialogue();
+        public void StartCurrentDialogue() {
+            if (!dialogue) return;
+
             OnDialogueStart?.Invoke();
+            dialogue.BeforeDialogue();
             PauseGameIfNeeded();
             EnqueueDialogueLines();
             ShowDialogue();
@@ -147,7 +139,7 @@ namespace Fog.Dialogue {
             if (IsActive) EndDialogue();
         }
 
-        private void PauseGameIfNeeded() {
+        protected virtual void PauseGameIfNeeded() {
             if (pauseDuringDialogue) Time.timeScale = 0f;
         }
 
@@ -215,11 +207,11 @@ namespace Fog.Dialogue {
         }
 
         private IEnumerator AutoSkipCoroutine() {
-            if (autoSkip) {
-                yield return new WaitForSecondsRealtime(timeUntilSkip);
+            if (!autoSkip) yield break;
 
-                StartCoroutine(NextLineCoroutine());
-            }
+            yield return new WaitForSecondsRealtime(timeUntilSkip);
+
+            StartCoroutine(NextLineCoroutine());
         }
 
         protected virtual void UpdatePanelColor() {
@@ -294,6 +286,8 @@ namespace Fog.Dialogue {
         public void EndDialogue() {
             EndDialogueWithoutCallback();
             OnDialogueEnd?.Invoke();
+            if (dialogue) dialogue.AfterDialogue();
+            dialogue = null;
         }
 
         public void EndDialogueWithoutCallback() {
@@ -313,7 +307,7 @@ namespace Fog.Dialogue {
             IsActive = false;
         }
 
-        private void UnpauseGameIfNeeded() {
+        protected virtual void UnpauseGameIfNeeded() {
             if (pauseDuringDialogue) Time.timeScale = 1f;
         }
 
@@ -328,9 +322,12 @@ namespace Fog.Dialogue {
         private void Awake() {
             if (!isSingleton) return;
 
-            if (instance == null)
+            if (!instance)
                 instance = this;
-            else if (instance != this) Destroy(this);
+            else if (instance != this) {
+                Debug.LogWarning($"Singleton {instance.name} is still active, destroying new object {name}");
+                Destroy(this);
+            }
         }
 
         private void OnDestroy() {

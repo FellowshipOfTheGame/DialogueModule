@@ -27,10 +27,10 @@ namespace Fog.Dialogue {
         }
 
         public void OnInteractAttempt() {
-            if (dialogue != null) DialogueHandler.instance.StartDialogue(dialogue);
+            if (dialogue) dialogue.StartDialogue();
         }
 
-        private bool HasAtLeastOneTrigger(Collider2D[] colliders) {
+        private static bool HasAtLeastOneTrigger(Collider2D[] colliders) {
             foreach (Collider2D col in colliders) {
                 if (col.isTrigger) return true;
             }
