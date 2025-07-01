@@ -16,7 +16,7 @@ namespace Fog.Dialogue {
         public string VisibleTag { get; protected set; }
         public string InvisibleTag { get; protected set; }
         public abstract string ClosingTag { get; }
-        public abstract bool WaitForType { get; }
+        public abstract int TypedLength { get; }
         public abstract bool MustClose { get; }
         public readonly string tagName;
 
@@ -32,7 +32,7 @@ namespace Fog.Dialogue {
 
         public void SetInvisibleIndexes(int invisibleStart) {
             InvisibleStartIndex = invisibleStart;
-            InvisibleEndIndex = InvisibleStartIndex + InvisibleTag.Length;
+            InvisibleEndIndex = InvisibleStartIndex + InvisibleTag.Length - 1;
         }
 
         public void SetClosingTagIndex(int closingIndex) {

@@ -16,6 +16,11 @@ namespace Fog.Dialogue {
             otherDialogue.options.CopyTo(options, 0);
         }
 
+        protected override void ParseLineTags() {
+            base.ParseLineTags();
+            question.ParseTags(TMProTagFactory);
+        }
+
         public override object Clone() {
             OptionsDialogue clone = CreateInstance<OptionsDialogue>();
             clone.CopyFrom(this);

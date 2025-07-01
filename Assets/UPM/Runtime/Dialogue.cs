@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEditor;
@@ -27,11 +28,10 @@ namespace Fog.Dialogue {
                 { "page", SimpleTextTag.CreateSimpleTag }, { "rotate", SimpleTextTag.CreateSimpleTag },
                 { "s", SimpleTextTag.CreateSimpleTag }, { "size", SimpleTextTag.CreateSimpleTag },
                 { "smallcaps", SimpleTextTag.CreateSimpleTag }, { "space", SimpleTextTag.CreateSimpleTag },
-                { "sprite", SimpleColoredTag.CreateColoredTag }, { "strikethrough", SimpleTextTag.CreateSimpleTag },
-                { "style", SimpleTextTag.CreateSimpleTag }, { "sub", SimpleTextTag.CreateSimpleTag },
-                { "sup", SimpleTextTag.CreateSimpleTag }, { "u", SimpleTextTag.CreateSimpleTag },
-                { "uppercase", SimpleTextTag.CreateSimpleTag }, { "voffset", SimpleTextTag.CreateSimpleTag },
-                { "width", SimpleTextTag.CreateSimpleTag },
+                { "sprite", SimpleColoredTag.CreateSpriteTag }, { "style", SimpleTextTag.CreateSimpleTag },
+                { "sub", SimpleTextTag.CreateSimpleTag }, { "sup", SimpleTextTag.CreateSimpleTag },
+                { "u", SimpleTextTag.CreateSimpleTag }, { "uppercase", SimpleTextTag.CreateSimpleTag },
+                { "voffset", SimpleTextTag.CreateSimpleTag }, { "width", SimpleTextTag.CreateSimpleTag },
             };
             return dict;
         }
@@ -60,12 +60,16 @@ namespace Fog.Dialogue {
         }
 
         [ContextMenu("Parse Tags (TMPro default)")]
-        protected void ParseLineTags() {
+        protected virtual void ParseLineTags() {
             if (lines.Count < 1) return;
 
             foreach (DialogueLine dialogueLine in lines) {
                 dialogueLine.ParseTags(TMProTagFactory);
             }
+        }
+
+        protected void OnEnable() {
+            ParseLineTags();
         }
 
 #if UNITY_EDITOR

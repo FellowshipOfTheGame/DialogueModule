@@ -71,17 +71,16 @@ namespace Fog.Dialogue {
         public bool isSingleton;
 
         protected DialogueLine currentLine;
+        protected DialogueLineTypewriter typewriter;
         protected string currentTitle = string.Empty;
+        protected int titleLength = -1;
         protected Color defaultPanelColor;
         protected readonly Queue<DialogueLine> dialogueLines = new();
         protected bool isLineDone = true;
-        protected StringBuilder stringBuilder;
         public bool IsActive { get; protected set; }
 
         private void Start() {
-            Image panelImg = dialogueBox ? dialogueBox.GetComponent<Image>() : null;
-            defaultPanelColor = panelImg ? panelImg.color : Color.white;
-            stringBuilder = new StringBuilder();
+            defaultPanelColor = dialogueBox.PanelColor;
         }
 
         private void Update() {
@@ -215,8 +214,7 @@ namespace Fog.Dialogue {
         }
 
         protected virtual void UpdatePanelColor() {
-            Image panelImg = dialogueBox.GetComponent<Image>();
-            if (panelImg) panelImg.color = currentLine.Color;
+            dialogueBox.PanelColor = currentLine.Color;
         }
 
         protected virtual void UpdatePortrait() {
@@ -224,26 +222,28 @@ namespace Fog.Dialogue {
             Color transparent = Color.white;
             transparent.a = 0;
 
-            if (!usePortraits || portrait == null) return;
+            if (!usePortraits || !portrait) return;
 
             portrait.sprite = currentLine.Portrait;
-            portrait.color = portrait.sprite != null ? Color.white : transparent;
-            portrait.gameObject.SetActive(portrait.sprite != null);
+            portrait.color = portrait.sprite ? Color.white : transparent;
+            portrait.gameObject.SetActive(portrait.sprite);
         }
 
         protected virtual void UpdateTitle() {
-            if (!useTitles || currentLine.Title == null) return;
+            if (!useTitles || currentLine.Title == null) {
+                titleLength = -1;
+                return;
+            }
 
-            stringBuilder.Clear();
-            if (titleText == dialogueText) stringBuilder.Append($"<size={dialogueText.fontSize + 3}>");
-
-            stringBuilder.Append($"<b>{currentLine.Title}</b>");
             if (titleText == dialogueText) {
-                stringBuilder.Append("</size>\n");
-                titleText.text = stringBuilder.ToString();
+                currentTitle = $"<size={dialogueText.fontSize + 3}><b>{currentLine.Title}</b></size>\n";
+                dialogueText.text = currentTitle;
+                titleLength = dialogueText.textInfo.characterCount;
+            } else {
+                titleText.text = $"<b>{currentLine.Title}</b>";
                 currentTitle = titleText.text;
-            } else
-                titleText.text = stringBuilder.ToString();
+                titleLength = titleText.textInfo.characterCount;
+            }
         }
 
         public void Skip() {
@@ -251,6 +251,7 @@ namespace Fog.Dialogue {
 
             StopAllCoroutines();
             if (fillInBeforeSkip && !isLineDone) {
+                typewriter.SkipToTheEnd();
                 FillDialogueText();
                 dialogueBox.JumpToEnd();
                 isLineDone = true;
@@ -259,28 +260,35 @@ namespace Fog.Dialogue {
         }
 
         private IEnumerator FillInTextCoroutine() {
-            if (useTypingEffect)
+            if (typewriter != null)
                 yield return TypeDialogueTextCoroutine();
             else
                 FillDialogueText();
         }
 
         protected virtual IEnumerator TypeDialogueTextCoroutine() {
-            stringBuilder.Clear();
-            stringBuilder.Append(dialogueText.text);
-            foreach (char character in currentLine.Text) {
-                stringBuilder.Append(character);
-                dialogueText.text = stringBuilder.ToString();
-                dialogueBox.ScrollToEnd();
+            int characterCount = 0;
+            if (titleText == dialogueText) {
+                characterCount = titleLength;
+                typewriter.Reset(currentLine, currentTitle);
+            } else {
+                typewriter.Reset(currentLine);
+            }
+            dialogueText.text = typewriter.GetOutputString();
+            dialogueBox.ScrollToEnd();
+            while (!typewriter.ReachedTheEnd) {
                 yield return WaitForFrames(framesBetweenCharacters);
+
+                characterCount += typewriter.AdvanceTypingIndex();
+                dialogueText.text = typewriter.GetOutputString();
+                int lineIndex = dialogueText.textInfo.characterInfo[characterCount - 1].lineNumber;
+                TMP_LineInfo lineInfo = dialogueText.textInfo.lineInfo[lineIndex];
+                dialogueBox.ScrollDownToFitBaseline(Mathf.Abs(lineInfo.descender - dialogueText.lineSpacing));
             }
         }
 
         protected virtual void FillDialogueText() {
-            stringBuilder.Clear();
-            stringBuilder.Append(dialogueText == titleText ? currentTitle : "");
-            stringBuilder.Append(currentLine.Text);
-            dialogueText.text = stringBuilder.ToString();
+            dialogueText.text = $"{(dialogueText == titleText ? currentTitle : "")}{currentLine.VisibleString}";
         }
 
         public void EndDialogue() {
@@ -300,8 +308,7 @@ namespace Fog.Dialogue {
             dialogueText.text = "";
             titleText.text = "";
             if (portrait && portrait.sprite) portrait.sprite = null;
-            Image panelImg = dialogueBox.GetComponent<Image>();
-            if (panelImg) panelImg.color = defaultPanelColor;
+            dialogueBox.PanelColor = defaultPanelColor;
             StopAllCoroutines();
             currentLine = null;
             IsActive = false;
@@ -319,18 +326,27 @@ namespace Fog.Dialogue {
         }
 
         #region Singleton
-        private void Awake() {
-            if (!isSingleton) return;
+        protected void Awake() {
+            if (!isSingleton) {
+                Init();
+                return;
+            }
 
             if (!instance)
                 instance = this;
             else if (instance != this) {
                 Debug.LogWarning($"Singleton {instance.name} is still active, destroying new object {name}");
                 Destroy(this);
+                return;
             }
+            Init();
         }
 
-        private void OnDestroy() {
+        protected void Init() {
+            typewriter = useTypingEffect ? new DialogueLineTypewriter() : null;
+        }
+
+        protected void OnDestroy() {
             if (isSingleton && instance == this) instance = null;
         }
         #endregion

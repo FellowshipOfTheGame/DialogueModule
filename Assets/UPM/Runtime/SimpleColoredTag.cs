@@ -8,13 +8,21 @@ namespace Fog.Dialogue {
         private const char colorStringIndicator = '\"';
         private const char colorCodeIndicator = '#';
 
+        private readonly int length = 0;
+
         public static SimpleColoredTag CreateColoredTag(int startIndex, string tagName, string fullTag) {
             SimpleColoredTag newTag = new(startIndex, tagName, fullTag);
             return newTag;
         }
 
-        private SimpleColoredTag(int startIndex, string tagName, string fullTag) :
+        public static SimpleColoredTag CreateSpriteTag(int startIndex, string tagName, string fullTag) {
+            SimpleColoredTag newTag = new(startIndex, tagName, fullTag, 1);
+            return newTag;
+        }
+
+        private SimpleColoredTag(int startIndex, string tagName, string fullTag, int typedLength = 0) :
             base(startIndex, tagName, fullTag) {
+            length = typedLength;
             VisibleTag = $"{OpenTagChar}{fullTag}{CloseTagChar}";
             int colorStart = fullTag.IndexOf(colorIndicator, StringComparison.Ordinal);
             int alphaStart = fullTag.IndexOf(alphaIndicator, StringComparison.Ordinal);
@@ -82,7 +90,7 @@ namespace Fog.Dialogue {
         }
 
         public override string ClosingTag => $"{OpenTagChar}{ClosingTagIndicator}{tagName}{CloseTagChar}";
-        public override bool WaitForType => false;
+        public override int TypedLength => length;
         public override bool MustClose => false;
     }
 }

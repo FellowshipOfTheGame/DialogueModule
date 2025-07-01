@@ -11,7 +11,7 @@ namespace Fog.Dialogue {
         }
 
         public override string ClosingTag => $"{OpenTagChar}{ClosingTagIndicator}{tagName}{CloseTagChar}";
-        public override bool WaitForType => false;
+        public override int TypedLength => 0;
         public override bool MustClose => false;
     }
 }

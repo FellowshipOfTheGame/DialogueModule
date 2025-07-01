@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Codice.CM.WorkspaceServer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +16,14 @@ namespace Fog.Dialogue {
         private readonly WaitForEndOfFrame waitForEndOfFrame = new();
         private float ContentHeight => content.rect.height;
         public float ViewportHeight => viewport.rect.height;
+        private Image panelImage;
 
-        // To do: Change this so it also works with horizontal scrolling
+        public Color PanelColor {
+            get => panelImage ? panelImage.color : Color.white;
+            set {
+                if (panelImage) panelImage.color = value;
+            }
+        }
 
         protected new void Reset() {
             smoothScrolling = false;
@@ -39,6 +46,11 @@ namespace Fog.Dialogue {
 
         protected new void Start() {
             base.Start();
+        }
+
+        protected override void Awake() {
+            base.Awake();
+            panelImage = GetComponent<Image>();
         }
 
         protected override void LateUpdate() {
@@ -130,6 +142,12 @@ namespace Fog.Dialogue {
                 StartCoroutine(ScrollingToPosition(targetNormalPosition));
             } else
                 JumpToPosition(targetNormalPosition);
+        }
+
+        public void ScrollDownToFitBaseline(float offset) {
+            offset = Mathf.Clamp(offset, ViewportHeight, ContentHeight);
+            float relativePosition = (offset - ViewportHeight) / (ContentHeight - ViewportHeight);
+            ScrollToPosition(1.0f - relativePosition);
         }
 
         private IEnumerator ScrollingToPosition(float targetNormalPosition) {

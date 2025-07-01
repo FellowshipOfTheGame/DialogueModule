@@ -77,7 +77,7 @@ namespace Fog.Dialogue {
 
                 if (text[index] != DialogueTextTag.CloseTagChar) {
                     if (tagName == null && DialogueTextTag.TagStopChars.Contains(text[index]))
-                        tagName = tagBuilder.ToString();
+                        tagName = !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
                     tagBuilder.Append(text[index]);
                     continue;
                 }
@@ -88,7 +88,7 @@ namespace Fog.Dialogue {
                     return index;
                 }
 
-                tagName ??= tagBuilder.ToString();
+                tagName ??= !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
                 if (!tagFactory.ContainsKey(tagName)) {
                     tagBuilder.Append(DialogueTextTag.CloseTagChar);
                     CancelIncompleteTagParse();

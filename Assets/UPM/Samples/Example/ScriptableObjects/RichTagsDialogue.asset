@@ -17,8 +17,9 @@ MonoBehaviour:
     text: 'You can also use most of the rich text tags provided by TextMeshPro:'
   - speaker: {fileID: 11400000, guid: 975b2c08788ba4543874afd4c71eacad, type: 2}
     text: Rich tags <gradient="Light to Dark Green - Vertical">testando gradiente</gradient><color=#AA0000FF>
-      testandooo <i>askdj</i> <s>asdjdassdjas</s> <color=#AAAA00FF>new color</color>
-      old color<sprite name="Grinning Face"><sprite name="Grinning Face" color=#00FF00FF>
+      testandooo<sup>oooo</sup> <i>askdj</i> <s>asdjdassdjas</s> <color="yellow"><u>new
+      color</u></color> old color <sprite name="Grinning Face"> <sprite name="Grinning
+      Face" color=#00FF00FF> <color="blue">end</color>
   - speaker: {fileID: 11400000, guid: 975b2c08788ba4543874afd4c71eacad, type: 2}
     text: Check out the package ReadMe for a more detailed description of which tags
       work and what to pay attention to

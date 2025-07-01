@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8f7e9de-5599-484e-9640-1ff9ee6cfb59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueTextTag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueTextTag.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Option.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Option.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleTextTag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleTextTag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/RichTagsDialogue.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/ScriptableObjects/RichTagsDialogue.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,21 +27,32 @@
       <option value="repository" />
     </option>
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18f5482d17338a7bbdeae155929167e4a8be10b5d2e9aed96c2562ed98f34f/System.Collections.ObjectModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Editor/ScrollPanelMenu.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/Dialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueLine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueLine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/InteractableExample.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueLine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueScrollPanel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/DialogueTextTag.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/OptionsDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/SimpleColoredTag.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/SimpleTextTag.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/ScriptableObjects/Lorem Ipsum.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/Example/ScriptableObjects/RichTagsDialogue.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Samples~/SimpleDemo/SimpleController_UsingActionAsset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@349678cb680f/Editor/UGUI/UI/ScrollRectEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -60,11 +69,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;2-0-update&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -156,7 +166,13 @@
       <workItem from="1750802317379" duration="1926000" />
       <workItem from="1750863465875" duration="3780000" />
       <workItem from="1750886953364" duration="4989000" />
-      <workItem from="1750970539301" duration="13693000" />
+      <workItem from="1750970539301" duration="14724000" />
+      <workItem from="1751310260834" duration="2239000" />
+      <workItem from="1751312674847" duration="7387000" />
+      <workItem from="1751320156757" duration="7080000" />
+      <workItem from="1751335974623" duration="82000" />
+      <workItem from="1751374550671" duration="10800000" />
+      <workItem from="1751390634854" duration="10682000" />
     </task>
     <task id="LOCAL-00001" summary="Updated editorconfig and ran CodeCleanup">
       <option name="closed" value="true" />
@@ -166,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748484890830</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial implementation of rich tag parsing">
+      <option name="closed" value="true" />
+      <created>1751037378676</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751037378676</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,38 +207,34 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Updated editorconfig and ran CodeCleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated editorconfig and ran CodeCleanup" />
+    <MESSAGE value="Initial implementation of rich tag parsing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial implementation of rich tag parsing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+        <breakpoint type="DotNet_Exception_Breakpoints">
           <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+        <breakpoint type="DotNet_Exception_Breakpoints">
           <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+        <breakpoint type="DotNet_Exception_Breakpoints">
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs</url>
-          <line>39</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" containingFunctionPresentation="Constructor 'DialogueLine'">
-            <startOffsets>
-              <option value="1519" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1520" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="DotNet_Exception_Breakpoints" />
+      </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
+        <watch expression="relativePosition" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
