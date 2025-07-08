@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Fog.Dialogue.Samples.Example {
+namespace Fog.Dialogue.Samples.RuntimeGeneration {
     public class InputActivator : MonoBehaviour {
         [SerializeField] private InputActionAsset actions;
 

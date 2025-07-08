@@ -1,0 +1,17 @@
+{
+    "name": "Fog.Dialogue.Samples.Example",
+    "rootNamespace": "Fog.Dialogue.Samples.Example",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:79be54fb8fa02ba47a1523c704eebcda"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

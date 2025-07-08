@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Fog.Dialogue.Samples.Example {
+namespace Fog.Dialogue.Samples.RuntimeGeneration {
     [RequireComponent(typeof(Rigidbody2D))]
     public class SimpleMove : MonoBehaviour {
         public static SimpleMove instance = null;

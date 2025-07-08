@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace Fog.Dialogue.Samples.Example {
-    [CreateAssetMenu(fileName = "NewDialogue", menuName = "FoG/DialogueModule/Sample/Example/DialogueSample")]
+namespace Fog.Dialogue.Samples.RuntimeGeneration {
+    [CreateAssetMenu(fileName = "NewDialogue", menuName = "FoG/DialogueModule/Sample/RuntimeGeneration/DialogueSample")]
     public class DialogueBlockMovement : Dialogue {
         public override void BeforeDialogue() {
             SimpleMove.instance.BlockMovement();

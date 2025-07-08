@@ -1,6 +1,6 @@
 {
   "name": "com.fellowshipofthegame.dialoguemodule",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "displayName": "[FoG] Dialogue Module",
   "description": "The dialogue module from Anathema revised and updated in Final Inferno, now available as a package",
   "unity": "6000.1",
@@ -10,8 +10,18 @@
   "samples": [
     {
       "displayName": "Example",
-      "description": "Simple example of character moving and 3 test dialogues",
+      "description": "Simple example of character moving and 4 test dialogues",
       "path": "Samples~/Example"
+    },
+    {
+      "displayName": "Custom Tags",
+      "description": "Example of how to create custom rich text tags adding new functionality",
+      "path": "Samples~/CustomTags"
+    },
+    {
+      "displayName": "Runtime Dialogue Generation",
+      "description": "Example of how to generate dialogues during runtime instead of using pre-made scriptable objects",
+      "path": "Samples~/RuntimeGeneration"
     }
   ]
 }
