@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEditor;
@@ -9,32 +8,9 @@ namespace Fog.Dialogue {
     ///     Creates a scriptable object for an array of dialogue lines, so that it can be saved as a file.
     /// </summary>
     [CreateAssetMenu(fileName = "NewDialogue", menuName = "FoG/DialogueModule/Dialogue")]
-    public class Dialogue : ScriptableObject {
-        public List<DialogueLine> lines = new();
-        protected static readonly ReadOnlyDictionary<string, DialogueTextTag.Constructor> TMProTagFactory =
-            new ReadOnlyDictionary<string, DialogueTextTag.Constructor>(BuildTMProTagFactory());
-
-        public static Dictionary<string, DialogueTextTag.Constructor> BuildTMProTagFactory() {
-            Dictionary<string, DialogueTextTag.Constructor> dict = new() {
-                { "align", SimpleTextTag.CreateSimpleTag }, { "allcaps", SimpleTextTag.CreateSimpleTag },
-                { "alpha", SimpleColoredTag.CreateColoredTag }, { "b", SimpleTextTag.CreateSimpleTag },
-                { "br", SimpleTextTag.CreateSimpleTag }, { "color", SimpleColoredTag.CreateColoredTag },
-                { "cspace", SimpleTextTag.CreateSimpleTag }, { "font", SimpleTextTag.CreateSimpleTag },
-                { "font-weight", SimpleTextTag.CreateSimpleTag }, { "gradient", SimpleTextTag.CreateSimpleTag },
-                { "i", SimpleTextTag.CreateSimpleTag }, { "indent", SimpleTextTag.CreateSimpleTag },
-                { "line-height", SimpleTextTag.CreateSimpleTag }, { "line-indent", SimpleTextTag.CreateSimpleTag },
-                { "lowercase", SimpleTextTag.CreateSimpleTag }, { "margin", SimpleTextTag.CreateSimpleTag },
-                { "mspace", SimpleTextTag.CreateSimpleTag }, { "nobr", SimpleTextTag.CreateSimpleTag },
-                { "page", SimpleTextTag.CreateSimpleTag }, { "rotate", SimpleTextTag.CreateSimpleTag },
-                { "s", SimpleTextTag.CreateSimpleTag }, { "size", SimpleTextTag.CreateSimpleTag },
-                { "smallcaps", SimpleTextTag.CreateSimpleTag }, { "space", SimpleTextTag.CreateSimpleTag },
-                { "sprite", SimpleColoredTag.CreateSpriteTag }, { "style", SimpleTextTag.CreateSimpleTag },
-                { "sub", SimpleTextTag.CreateSimpleTag }, { "sup", SimpleTextTag.CreateSimpleTag },
-                { "u", SimpleTextTag.CreateSimpleTag }, { "uppercase", SimpleTextTag.CreateSimpleTag },
-                { "voffset", SimpleTextTag.CreateSimpleTag }, { "width", SimpleTextTag.CreateSimpleTag },
-            };
-            return dict;
-        }
+    public class Dialogue : ScriptableObject, IDialogue {
+        [SerializeField] private List<DialogueLine> lines = new();
+        public List<DialogueLine> Lines => lines;
 
         protected void CopyFrom(Dialogue otherDialogue) {
             lines.Clear();
@@ -64,7 +40,7 @@ namespace Fog.Dialogue {
             if (lines.Count < 1) return;
 
             foreach (DialogueLine dialogueLine in lines) {
-                dialogueLine.ParseTags(TMProTagFactory);
+                dialogueLine.ParseTags(IDialogue.TMProTagFactory);
             }
         }
 

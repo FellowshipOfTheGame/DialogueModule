@@ -52,9 +52,9 @@ namespace Fog.Dialogue {
             visibleLineBuilder.Clear();
             invisibleLineBuilder.Clear();
             for (int index = 0; index < text.Length; index++) {
-                if (text[index] == DialogueTextTag.OpenTagChar)
+                if (text[index] == DialogueTextTag.OpenTagChar) {
                     index = ParseTag(index, tagFactory);
-                else {
+                } else {
                     visibleLineBuilder.Append(text[index]);
                     invisibleLineBuilder.Append(text[index]);
                 }
@@ -89,6 +89,7 @@ namespace Fog.Dialogue {
                 }
 
                 tagName ??= !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
+
                 if (!tagFactory.ContainsKey(tagName)) {
                     tagBuilder.Append(DialogueTextTag.CloseTagChar);
                     CancelIncompleteTagParse();

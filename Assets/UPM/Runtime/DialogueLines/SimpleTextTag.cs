@@ -5,7 +5,7 @@ namespace Fog.Dialogue {
             return newTag;
         }
 
-        private SimpleTextTag(int startIndex, string tagName, string fullTag) : base(startIndex, tagName, fullTag) {
+        protected SimpleTextTag(int startIndex, string tagName, string fullTag) : base(startIndex, tagName, fullTag) {
             VisibleTag = $"{OpenTagChar}{fullTag}{CloseTagChar}";
             InvisibleTag = $"{OpenTagChar}{fullTag}{CloseTagChar}";
         }

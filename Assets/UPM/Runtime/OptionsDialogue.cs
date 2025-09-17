@@ -18,7 +18,7 @@ namespace Fog.Dialogue {
 
         protected override void ParseLineTags() {
             base.ParseLineTags();
-            question.ParseTags(TMProTagFactory);
+            question.ParseTags(IDialogue.TMProTagFactory);
         }
 
         public override object Clone() {

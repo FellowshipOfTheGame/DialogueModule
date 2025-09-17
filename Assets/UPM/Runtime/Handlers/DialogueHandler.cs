@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -31,7 +30,7 @@ namespace Fog.Dialogue {
 
         [Tooltip(
             "Current dialogue script to be displayed. To create a new dialogue, go to Assets->Create->FoG->DialogueModule->Dialogue.")]
-        public Dialogue dialogue;
+        public IDialogue dialogue;
 
         [Tooltip("Game object that contains the chat box to be enabled/disabled")]
         public DialogueScrollPanel dialogueBox;
@@ -125,7 +124,7 @@ namespace Fog.Dialogue {
         }
 
         public void StartCurrentDialogue() {
-            if (!dialogue) return;
+            if (dialogue == null) return;
 
             OnDialogueStart?.Invoke();
             dialogue.BeforeDialogue();
@@ -143,7 +142,7 @@ namespace Fog.Dialogue {
         }
 
         private void EnqueueDialogueLines() {
-            foreach (DialogueLine line in dialogue.lines) dialogueLines.Enqueue(line);
+            foreach (DialogueLine line in dialogue.Lines) dialogueLines.Enqueue(line);
         }
 
         private void ShowDialogue() {
@@ -294,7 +293,7 @@ namespace Fog.Dialogue {
         public void EndDialogue() {
             EndDialogueWithoutCallback();
             OnDialogueEnd?.Invoke();
-            if (dialogue) dialogue.AfterDialogue();
+            dialogue?.AfterDialogue();
             dialogue = null;
         }
 

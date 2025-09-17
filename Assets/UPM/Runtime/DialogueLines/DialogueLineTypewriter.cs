@@ -5,21 +5,21 @@ using UnityEngine;
 
 namespace Fog.Dialogue {
     public class DialogueLineTypewriter {
-        private const string invisibilityTag = "<color=#00000000>";
-        private readonly StringBuilder outputBuilder = new();
-        private int visibleIndex = -1;
-        private int invisibleIndex = -1;
+        protected const string invisibilityTag = "<color=#00000000>";
+        protected readonly StringBuilder outputBuilder = new();
+        protected int visibleIndex = -1;
+        protected int invisibleIndex = -1;
         public bool ReachedTheEnd =>
             currentLine != null &&
             (visibleIndex >= currentLine.VisibleString.Length - 1
              || invisibleIndex >= currentLine.InvisibleString.Length - 1);
-        private int tagIndex = -1;
-        private string prefix = string.Empty;
-        private DialogueLine currentLine = null;
-        private readonly List<DialogueTextTag> pendingTags = new();
-        private readonly List<DialogueTextTag> sortedPendingTags = new();
+        protected int tagIndex = -1;
+        protected string prefix = string.Empty;
+        protected DialogueLine currentLine = null;
+        protected readonly List<DialogueTextTag> pendingTags = new();
+        protected readonly List<DialogueTextTag> sortedPendingTags = new();
 
-        public void Reset(DialogueLine line, string linePrefix = null) {
+        public virtual void Reset(DialogueLine line, string linePrefix = null) {
             prefix = linePrefix ?? string.Empty;
             currentLine = line;
             pendingTags.Clear();
@@ -29,7 +29,7 @@ namespace Fog.Dialogue {
             tagIndex = currentLine.Tags.Count > 0 ? 0 : -1;
         }
 
-        public string GetOutputString() {
+        public virtual string GetOutputString() {
             outputBuilder.Clear();
             outputBuilder.Append(prefix);
             visibleIndex = Math.Min(visibleIndex, currentLine.VisibleString.Length - 1);
@@ -47,7 +47,7 @@ namespace Fog.Dialogue {
             return outputBuilder.ToString();
         }
 
-        public int AdvanceTypingIndex() {
+        public virtual int AdvanceTypingIndex() {
             if (ReachedTheEnd) {
                 SkipToTheEnd();
                 return 0;
@@ -62,7 +62,7 @@ namespace Fog.Dialogue {
             return ReachedTheEnd ? 0 : 1;
         }
 
-        private int ParseAndUpdateTags() {
+        protected virtual int ParseAndUpdateTags() {
             bool shouldCheck = true;
 
             while (shouldCheck) {
@@ -81,12 +81,12 @@ namespace Fog.Dialogue {
             return 0;
         }
 
-        private bool NextCharacterIsTagStart() {
+        protected virtual bool NextCharacterIsTagStart() {
             return (tagIndex < currentLine.Tags.Count && visibleIndex == currentLine.Tags[tagIndex].StartIndex)
                    || (sortedPendingTags.Count > 0 && visibleIndex == sortedPendingTags[0].ClosingTagIndex);
         }
 
-        private int ParseNewTag() {
+        protected virtual int ParseNewTag() {
             DialogueTextTag newTag = currentLine.Tags[tagIndex++];
             visibleIndex = Mathf.Min(newTag.EndIndex + 1, currentLine.VisibleString.Length - 1);
             invisibleIndex = Mathf.Min(newTag.InvisibleEndIndex + 1, currentLine.InvisibleString.Length - 1);
@@ -98,11 +98,11 @@ namespace Fog.Dialogue {
             return newTag.TypedLength;
         }
 
-        private static int CompareTags(DialogueTextTag x, DialogueTextTag y) {
+        protected static int CompareTags(DialogueTextTag x, DialogueTextTag y) {
             return x.ClosingTagIndex.CompareTo(y.ClosingTagIndex);
         }
 
-        private void ClosePendingTag() {
+        protected virtual void ClosePendingTag() {
             DialogueTextTag closedTag = sortedPendingTags[0];
             sortedPendingTags.RemoveAt(0);
             pendingTags.Remove(closedTag);

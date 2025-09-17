@@ -6,19 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="e8f7e9de-5599-484e-9640-1ff9ee6cfb59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem/Inputs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem/Inputs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem/Inputs.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/InputSystem/Inputs.inputactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/InputActivator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/SimpleMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Agent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Agent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLineTypewriter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLineTypewriter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueScrollPanel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueTextTag.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueTextTag.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/IInteractable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/IInteractable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/InteractableExample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleTextTag.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleTextTag.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +51,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18f5482d17338a7bbdeae155929167e4a8be10b5d2e9aed96c2562ed98f34f/System.Collections.ObjectModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/SimpleColoredTag.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/DialogueBlockMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Samples~/SimpleDemo/SimpleController_UsingActionAsset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
@@ -167,6 +178,8 @@
       <workItem from="1751551846594" duration="233000" />
       <workItem from="1751552100086" duration="1064000" />
       <workItem from="1752003067226" duration="923000" />
+      <workItem from="1752081502708" duration="5587000" />
+      <workItem from="1752156899713" duration="3096000" />
     </task>
     <task id="LOCAL-00001" summary="Updated editorconfig and ran CodeCleanup">
       <option name="closed" value="true" />

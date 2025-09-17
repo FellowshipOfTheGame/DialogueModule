@@ -3,12 +3,12 @@ using System.Text;
 
 namespace Fog.Dialogue {
     public class SimpleColoredTag : DialogueTextTag {
-        private const string colorIndicator = "color=";
-        private const string alphaIndicator = "alpha=";
-        private const char colorStringIndicator = '\"';
-        private const char colorCodeIndicator = '#';
+        protected const string colorIndicator = "color=";
+        protected const string alphaIndicator = "alpha=";
+        protected const char colorStringIndicator = '\"';
+        protected const char colorCodeIndicator = '#';
 
-        private readonly int length = 0;
+        protected readonly int length = 0;
 
         public static SimpleColoredTag CreateColoredTag(int startIndex, string tagName, string fullTag) {
             SimpleColoredTag newTag = new(startIndex, tagName, fullTag);
@@ -20,7 +20,7 @@ namespace Fog.Dialogue {
             return newTag;
         }
 
-        private SimpleColoredTag(int startIndex, string tagName, string fullTag, int typedLength = 0) :
+        protected SimpleColoredTag(int startIndex, string tagName, string fullTag, int typedLength = 0) :
             base(startIndex, tagName, fullTag) {
             length = typedLength;
             VisibleTag = $"{OpenTagChar}{fullTag}{CloseTagChar}";
