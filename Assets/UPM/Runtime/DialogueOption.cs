@@ -6,15 +6,15 @@ using UnityEngine.UI;
 namespace Fog.Dialogue {
     [RequireComponent(typeof(RectTransform))]
     public class DialogueOption : MonoBehaviour {
-        [SerializeField] private TextMeshProUGUI textField;
-        [SerializeField] private Image focusIndicator;
+        [SerializeField] protected TextMeshProUGUI textField;
+        [SerializeField] protected Image focusIndicator;
         public UnityAction OnExit;
         public UnityAction OnFocus;
-
         public UnityAction OnSelect = null;
-        public Dialogue NextDialogue { get; private set; }
 
-        private void Awake() {
+        public IDialogueOption Option { get; protected set; }
+
+        protected virtual void Awake() {
             if (!focusIndicator) return;
 
             focusIndicator.enabled = false;
@@ -22,9 +22,9 @@ namespace Fog.Dialogue {
             OnExit += ToggleFocus;
         }
 
-        public virtual void Configure(DialogueOptionInfo info) {
-            textField.text = info.text;
-            NextDialogue = info.nextDialogue;
+        public virtual void Configure(IDialogueOption option) {
+            Option = option;
+            textField.text = option.Text;
         }
 
         protected virtual void ToggleFocus() {

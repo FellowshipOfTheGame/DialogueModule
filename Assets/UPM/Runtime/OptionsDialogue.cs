@@ -8,6 +8,18 @@ namespace Fog.Dialogue {
     public class OptionsDialogue : Dialogue {
         [SerializeField] protected DialogueLine question;
         [SerializeField] protected DialogueOptionInfo[] options;
+        protected IDialogueOption[] optionsCast = null;
+        protected IDialogueOption[] OptionsCast {
+            get {
+                if (optionsCast != null) return optionsCast;
+
+                optionsCast = new IDialogueOption[options.Length];
+                for (int index = 0; index < options.Length; index++) {
+                    optionsCast[index] = options[index];
+                }
+                return optionsCast;
+            }
+        }
 
         protected void CopyFrom(OptionsDialogue otherDialogue) {
             base.CopyFrom(otherDialogue);
@@ -29,8 +41,8 @@ namespace Fog.Dialogue {
 
         public override void AfterDialogue() {
             base.AfterDialogue();
-            Agent.Instance.BlockInteractions();
-            DialogueHandler.instance.DisplayOptions(question, options);
+            if (Agent.Instance) Agent.Instance.BlockInteractions();
+            DialogueHandler.instance.DisplayOptions(question, OptionsCast);
         }
     }
 }

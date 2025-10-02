@@ -5,8 +5,6 @@ namespace Fog.Dialogue {
     public interface IDialogue {
         public List<DialogueLine> Lines { get; }
 
-        public object Clone();
-
         public void BeforeDialogue();
 
         public void AfterDialogue();

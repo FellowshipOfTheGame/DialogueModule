@@ -117,7 +117,7 @@ namespace Fog.Dialogue {
             EndDialogue();
         }
 
-        public void StartDialogue(Dialogue newDialogue) {
+        public void StartDialogue(IDialogue newDialogue) {
             EndActiveDialogue();
             dialogue = newDialogue;
             StartCurrentDialogue();
@@ -151,7 +151,7 @@ namespace Fog.Dialogue {
             StartCoroutine(NextLineCoroutine());
         }
 
-        public void DisplayOptions(DialogueLine questionLine, DialogueOptionInfo[] options) {
+        public void DisplayOptions(DialogueLine questionLine, IDialogueOption[] options) {
             EndActiveDialogueWithoutCallback();
             PauseGameIfNeeded();
             ShowQuestion(questionLine, options);
@@ -161,7 +161,7 @@ namespace Fog.Dialogue {
             if (IsActive) EndDialogueWithoutCallback();
         }
 
-        private void ShowQuestion(DialogueLine questionLine, DialogueOptionInfo[] options) {
+        private void ShowQuestion(DialogueLine questionLine, IDialogueOption[] options) {
             currentLine = questionLine;
             IsActive = false;
             isLineDone = false;
@@ -169,7 +169,7 @@ namespace Fog.Dialogue {
             StartCoroutine(ShowQuestionCoroutine(options));
         }
 
-        private IEnumerator ShowQuestionCoroutine(DialogueOptionInfo[] options) {
+        private IEnumerator ShowQuestionCoroutine(IDialogueOption[] options) {
             yield return ShowLineSpeakerAndTextCoroutine();
 
             optionHandler.CreateOptions(options);
@@ -293,8 +293,9 @@ namespace Fog.Dialogue {
         public void EndDialogue() {
             EndDialogueWithoutCallback();
             OnDialogueEnd?.Invoke();
-            dialogue?.AfterDialogue();
+            IDialogue endedDialogue = dialogue;
             dialogue = null;
+            endedDialogue?.AfterDialogue();
         }
 
         public void EndDialogueWithoutCallback() {

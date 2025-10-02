@@ -59,10 +59,10 @@ namespace Fog.Dialogue {
             }
         }
 
-        public void CreateOptions(DialogueOptionInfo[] infos) {
+        public void CreateOptions(IDialogueOption[] infos) {
             if (infos.Length > 0) {
                 container.gameObject.SetActive(true);
-                foreach (DialogueOptionInfo info in infos) CreateNewOption(info);
+                foreach (IDialogueOption info in infos) CreateNewOption(info);
                 // This can be called from animation instead of coroutine, for better visual effect
                 StartCoroutine(DelayedActivate(activationTime));
             } else {
@@ -71,7 +71,7 @@ namespace Fog.Dialogue {
             }
         }
 
-        private void CreateNewOption(DialogueOptionInfo info) {
+        private void CreateNewOption(IDialogueOption info) {
             GameObject go = Instantiate(optionPrefab, optionList);
             DialogueOption newOption = go.GetComponentInChildren<DialogueOption>();
             newOption.Configure(info);
@@ -115,14 +115,10 @@ namespace Fog.Dialogue {
             if (selectOption) audioSource.PlayOneShot(selectOption);
             Deactivate();
             ResetTimer();
-            Dialogue selectedDialogue = currentOptionIndex >= 0 ? CurrentOption.NextDialogue : null;
+            IDialogueOption selectedOption = currentOptionIndex >= 0 ? CurrentOption.Option : null;
             ClearOptionList();
-            StartOrEndDialogue(selectedDialogue);
-        }
-
-        private static void StartOrEndDialogue(Dialogue selectedDialogue) {
-            if (selectedDialogue)
-                DialogueHandler.instance.StartDialogue(selectedDialogue);
+            if (selectedOption != null)
+                selectedOption.Select();
             else
                 DialogueHandler.instance.EndDialogueWithoutCallback();
         }
