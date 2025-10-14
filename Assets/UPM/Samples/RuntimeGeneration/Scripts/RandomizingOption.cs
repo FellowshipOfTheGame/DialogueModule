@@ -15,7 +15,7 @@ namespace Fog.Dialogue.Samples.RuntimeGeneration {
             onSelect.Invoke(key);
         }
 
-        public void Randomize(string text, string newKey) {
+        public void ChangeValues(string text, string newKey) {
             Text = text;
             key = newKey;
         }

@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speaker: {fileID: 11400000, guid: 975b2c08788ba4543874afd4c71eacad, type: 2}
+  randomizer: {fileID: 11400000, guid: 43d0a662c6f4f4b53971e4efc58bcd38, type: 2}
 --- !u!4 &1947468612
 Transform:
   m_ObjectHideFlags: 0

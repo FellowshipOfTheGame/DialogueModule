@@ -1,37 +1,49 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Fog.Dialogue.Samples.RuntimeGeneration {
     public class RandomizedDialogue : IDialogue {
-        private const int optionsCount = 2;
-        private const int lineCount = 4;
-        private const string questionPrompt = "question";
-        private const string firstKey = "start";
+        // Ideally this value should be dynamic but options is an array and I don't want to deal with this right now =)
+        public const int OptionsCount = 2;
         public List<DialogueLine> Lines { get; } = new();
-        private readonly IDialogueOption[] options = new IDialogueOption[optionsCount];
+        private readonly IDialogueOption[] options = new IDialogueOption[OptionsCount];
         private readonly DialogueLine question;
+        private readonly IDialogueRandomizer randomizer;
         private readonly DialogueEntity speaker;
 
-        public RandomizedDialogue(DialogueEntity speaker) {
+        public RandomizedDialogue(DialogueEntity speaker, IDialogueRandomizer randomizer) {
             this.speaker = speaker;
-            question = new DialogueLine(speaker, questionPrompt);
+            this.randomizer = randomizer;
+            question = new RandomizedDialogueLine(speaker, randomizer.Question);
             question.ParseTags(IDialogue.TMProTagFactory);
-            for (int index = 0; index < optionsCount; index++) {
+            for (int index = 0; index < OptionsCount; index++) {
                 options[index] = new RandomizingOption(key => {
-                    Debug.Log($"Selected key {key}");
                     Randomize(key);
                     StartDialogue();
                 });
-                (options[index] as RandomizingOption)?.Randomize($"{index + 1}", $"{index + 1}");
             }
-            for (int index = 0; index < lineCount; index++) {
-                Lines.Add(new RandomizedDialogueLine(speaker, $"dialogue line {index + 1}"));
-                Lines[index].ParseTags(IDialogue.TMProTagFactory);
-            }
-            Randomize(firstKey);
+            randomizer.Reset();
+            ApplyRandomizedValues();
         }
 
-        private void Randomize(string key) { }
+        private void ApplyRandomizedValues() {
+            (question as RandomizedDialogueLine)?.ChangeText(randomizer.Question);
+            for (int index = 0; index < OptionsCount; index++) {
+                (options[index] as RandomizingOption)?.ChangeValues(randomizer.Options[index], randomizer.Keys[index]);
+            }
+            for (int index = 0; index < randomizer.Lines.Count; index++) {
+                if (index < Lines.Count) {
+                    (Lines[index] as RandomizedDialogueLine)?.ChangeText(randomizer.Lines[index]);
+                } else {
+                    Lines.Add(new RandomizedDialogueLine(speaker, randomizer.Lines[index]));
+                    Lines[index].ParseTags(IDialogue.TMProTagFactory);
+                }
+            }
+        }
+
+        private void Randomize(string key) {
+            randomizer.Randomize(key);
+            ApplyRandomizedValues();
+        }
 
         public void BeforeDialogue() { }
 
