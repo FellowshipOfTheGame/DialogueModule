@@ -20,15 +20,18 @@ namespace Fog.Dialogue {
 
         private int currentOptionIndex = -1;
         private readonly List<DialogueOption> options = new();
+        private readonly Queue<DialogueOption> disabledOptions = new();
         private float timer;
         private bool IsTimerOver => timer > inputCooldown;
-        private DialogueOption CurrentOption => options[currentOptionIndex];
+        private DialogueOption CurrentOption =>
+            currentOptionIndex >= 0 && currentOptionIndex < options.Count ?
+                options[currentOptionIndex] :
+                null;
 
         public bool IsActive { get; private set; }
 
         private bool SubmitButtonIsPressed =>
-            submitAction.action.phase == InputActionPhase.Started ||
-            submitAction.action.phase == InputActionPhase.Performed;
+            submitAction.action.phase is InputActionPhase.Started or InputActionPhase.Performed;
 
         private void Awake() {
             audioSource = GetComponent<AudioSource>();
@@ -49,25 +52,46 @@ namespace Fog.Dialogue {
 
         private void ValidatePrefab() {
             if (!optionPrefab) {
-                Debug.Log("No prefab detected", gameObject);
-                Destroy(this);
+                Debug.LogError("No prefab detected", gameObject);
             } else {
-                if (!optionPrefab.GetComponent<DialogueOption>()) {
-                    Debug.Log("Prefab must have a DialogueOption component", gameObject);
-                    Destroy(this);
-                }
+                if (optionPrefab.GetComponent<DialogueOption>()) return;
+
+                Debug.LogError("Prefab must have a DialogueOption component", gameObject);
             }
+            Destroy(this);
         }
 
         public void CreateOptions(IDialogueOption[] infos) {
             if (infos.Length > 0) {
                 container.gameObject.SetActive(true);
-                foreach (IDialogueOption info in infos) CreateNewOption(info);
+                UpdateOptionList(infos);
                 // This can be called from animation instead of coroutine, for better visual effect
                 StartCoroutine(DelayedActivate(activationTime));
             } else {
-                Debug.Log("Passed empty option array to Dialogue Handler", this);
+                Debug.LogError("Passed empty option array to Dialogue Handler", this);
                 SelectOption();
+            }
+        }
+
+        private void UpdateOptionList(IDialogueOption[] infos) {
+            for (int index = 0; index < infos.Length; index++) {
+                if (index < options.Count) {
+                    options[index].Configure(infos[index]);
+                    continue;
+                }
+                if (disabledOptions.Count > 0) {
+                    DialogueOption option = disabledOptions.Dequeue();
+                    option.Configure(infos[index]);
+                    option.gameObject.SetActive(true);
+                    options.Add(option);
+                } else {
+                    CreateNewOption(infos[index]);
+                }
+            }
+            for (int index = options.Count - 1; index >= infos.Length; index--) {
+                options[index].gameObject.SetActive(false);
+                disabledOptions.Enqueue(options[index]);
+                options.RemoveAt(index);
             }
         }
 
@@ -100,7 +124,7 @@ namespace Fog.Dialogue {
         }
 
         private void FocusOption() {
-            RectTransform optionRect = CurrentOption.GetComponent<RectTransform>();
+            RectTransform optionRect = CurrentOption.RectTransform;
             float normalizedTop = scrollPanel.NormalizedTopPosition(optionRect);
             float normalizedBottom = scrollPanel.NormalizedBottomPosition(optionRect);
 

@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e8f7e9de-5599-484e-9640-1ff9ee6cfb59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scenes/RuntimeDialoguesScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scenes/RuntimeDialoguesScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +36,14 @@
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogueLine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="FORCE_HIGHLIGHTING" />
@@ -186,7 +187,8 @@
       <workItem from="1760317522805" duration="5585000" />
       <workItem from="1760358657328" duration="1842000" />
       <workItem from="1760445252880" duration="1891000" />
-      <workItem from="1760455534216" duration="406000" />
+      <workItem from="1760455534216" duration="443000" />
+      <workItem from="1760459123491" duration="1661000" />
     </task>
     <task id="LOCAL-00001" summary="Updated editorconfig and ran CodeCleanup">
       <option name="closed" value="true" />
@@ -220,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759363889147</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Basic randomizer logic implemented">
+      <option name="closed" value="true" />
+      <created>1760455972552</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1760455972552</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +250,8 @@
     <MESSAGE value="Initial implementation of rich tag parsing" />
     <MESSAGE value="Rich tag parsing working properly for most TMPro default tags&#10;&#10;strikethrough tag does not work well with color tag, and a few others were skipped" />
     <MESSAGE value="Updated dialogue option logic and created randomizer for sample" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dialogue option logic and created randomizer for sample" />
+    <MESSAGE value="Basic randomizer logic implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic randomizer logic implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

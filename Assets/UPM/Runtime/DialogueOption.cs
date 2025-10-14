@@ -11,10 +11,12 @@ namespace Fog.Dialogue {
         public UnityAction OnExit;
         public UnityAction OnFocus;
         public UnityAction OnSelect = null;
+        public RectTransform RectTransform { get; protected set; } = null;
 
         public IDialogueOption Option { get; protected set; }
 
         protected virtual void Awake() {
+            RectTransform = GetComponent<RectTransform>();
             if (!focusIndicator) return;
 
             focusIndicator.enabled = false;
