@@ -7,14 +7,12 @@ namespace Fog.Dialogue.Samples.Example {
             SimpleMove.instance.BlockMovement();
 
             base.BeforeDialogue();
-            DialogueHandler.instance.OnDialogueStart -= BeforeDialogue;
         }
 
         public override void AfterDialogue() {
             SimpleMove.instance.AllowMovement();
 
             base.AfterDialogue();
-            DialogueHandler.instance.OnDialogueStart -= AfterDialogue;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using Codice.CM.WorkspaceServer;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Fog.Dialogue {
@@ -9,23 +9,31 @@ namespace Fog.Dialogue {
     [RequireComponent(typeof(RectTransform))]
     public class DialogueScrollPanel : ScrollRect {
         public bool smoothScrolling;
+        [HideInInspectorIfNot(nameof(smoothScrolling))]
         public float scrollSpeed;
         [SerializeField] private GameObject scrollUpIndicator;
+        protected bool hasUpIndicator;
         [SerializeField] private GameObject scrollDownIndicator;
+        protected bool hasDownIndicator;
         [SerializeField] private GameObject skipIndicator;
+        [SerializeField] private InputActionReference directionsAction;
+        [SerializeField] private Image panelImage;
+        protected Image PanelImage {
+            get {
+                if (!panelImage) panelImage = GetComponent<Image>();
+                return panelImage;
+            }
+        }
         private readonly WaitForEndOfFrame waitForEndOfFrame = new();
         private float ContentHeight => content.rect.height;
         public float ViewportHeight => viewport.rect.height;
-        private Image panelImage;
+        private RectTransform rectTransform;
+        private bool inputActive;
 
-        public Color PanelColor {
-            get => panelImage ? panelImage.color : Color.white;
-            set {
-                if (panelImage) panelImage.color = value;
-            }
-        }
+        public Color PanelColor { get => PanelImage ? PanelImage.color : Color.white; set => PanelImage.color = value; }
 
         protected new void Reset() {
+            base.Reset();
             smoothScrolling = false;
             scrollSpeed = 10f;
             content = null;
@@ -44,22 +52,40 @@ namespace Fog.Dialogue {
             onValueChanged = null;
         }
 
-        protected new void Start() {
+        protected new virtual void Start() {
             base.Start();
         }
 
-        protected override void Awake() {
+        protected new virtual void Awake() {
             base.Awake();
-            panelImage = GetComponent<Image>();
+            inputActive = false;
+            rectTransform = GetComponent<RectTransform>();
+            hasUpIndicator = scrollUpIndicator != null;
+            hasDownIndicator = scrollDownIndicator != null;
+        }
+
+        protected virtual void Update() {
+            if (!inputActive) return;
+
+            float axisValue = directionsAction.action.ReadValue<Vector2>().y;
+            Scroll(axisValue * Time.deltaTime);
+        }
+
+        public void ActivateScrollInput() {
+            inputActive = true;
+        }
+
+        public void DeactivateScrollInput() {
+            inputActive = false;
         }
 
         protected override void LateUpdate() {
             base.LateUpdate();
-            if (scrollUpIndicator != null) {
+            if (hasUpIndicator) {
                 scrollUpIndicator.SetActive(IsVerticalPositionLowerThan(1.0f) &&
                                             ContentHeight - ViewportHeight > Mathf.Epsilon);
             }
-            if (scrollDownIndicator != null) {
+            if (hasDownIndicator) {
                 scrollDownIndicator.SetActive(IsVerticalPositionHigherThan(0f) &&
                                               ContentHeight - ViewportHeight > Mathf.Epsilon);
             }
@@ -108,7 +134,8 @@ namespace Fog.Dialogue {
         }
 
         public void Scroll(float axisInputValue) {
-            RectTransform rectTransform = transform as RectTransform;
+            if (ContentHeight - ViewportHeight <= Mathf.Epsilon) return;
+
             float incrementValue = axisInputValue * scrollSpeed * (rectTransform.rect.height / ContentHeight);
             verticalNormalizedPosition = Mathf.Clamp(verticalNormalizedPosition + incrementValue, 0f, 1f);
         }

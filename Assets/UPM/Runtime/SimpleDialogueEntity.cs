@@ -1,8 +1,8 @@
 using UnityEngine;
 
 namespace Fog.Dialogue {
-    [CreateAssetMenu(fileName = "NewDialogueEntity", menuName = "FoG/DialogueModule/DialogueEntityExample")]
-    public class DialogueEntityExample : DialogueEntity {
+    [CreateAssetMenu(fileName = "NewDialogueEntity", menuName = "FoG/DialogueModule/SimpleDialogueEntity")]
+    public class SimpleDialogueEntity : DialogueEntity {
         [SerializeField] private Color dialogueColor = Color.white;
 
         [SerializeField] private string dialogueName = "";

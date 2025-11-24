@@ -12,7 +12,7 @@ namespace Fog.Dialogue {
             if (nextDialogue)
                 nextDialogue.StartDialogue();
             else
-                DialogueHandler.instance.EndDialogueWithoutCallback();
+                DialogueHandler.Instance.InterruptDialogue();
         }
     }
 }

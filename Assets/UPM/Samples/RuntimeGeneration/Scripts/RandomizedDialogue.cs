@@ -48,11 +48,11 @@ namespace Fog.Dialogue.Samples.RuntimeGeneration {
         public void BeforeDialogue() { }
 
         public void AfterDialogue() {
-            DialogueHandler.instance.DisplayOptions(question, options);
+            DialogueHandler.Instance.DisplayOptions(question, options);
         }
 
         public void StartDialogue() {
-            DialogueHandler.instance.StartDialogue(this);
+            DialogueHandler.Instance.StartDialogue(this);
         }
     }
 }

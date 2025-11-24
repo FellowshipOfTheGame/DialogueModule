@@ -15,8 +15,8 @@ namespace Fog.Dialogue.Samples.RuntimeGeneration {
 
         public void ChangeText(string newText) {
             text = newText;
-            VisibleString = newText;
-            InvisibleString = newText;
+            VisibleText = newText;
+            InvisibleText = newText;
             if (currentTagFactory != null) ParseTags(currentTagFactory);
         }
     }

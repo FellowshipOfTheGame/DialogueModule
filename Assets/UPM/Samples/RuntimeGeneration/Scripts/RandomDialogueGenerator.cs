@@ -19,7 +19,7 @@ namespace Fog.Dialogue.Samples.RuntimeGeneration {
         public string Question { get; private set; } = "Select a new string key now";
         private readonly List<string> lines = new();
         private ReadOnlyCollection<string> readonlyLines = null;
-        public ReadOnlyCollection<string> Lines => readonlyLines ??= new ReadOnlyCollection<string>(lines);
+        public ReadOnlyCollection<string> Lines => readonlyLines ??= lines.AsReadOnly();
 
         private readonly List<string> availableKeys = new();
         private readonly List<string> keyHistory = new();

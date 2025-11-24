@@ -5,38 +5,47 @@ using System.Text;
 using UnityEngine;
 
 namespace Fog.Dialogue {
-    /// <summary>
-    ///     This is the dialogue instance, which will be in a list in the inspector
-    ///     There are getters but no setter - To prevent edit from outside scripts, overwriting dialogue made by the writers
-    ///     The only way to edit dialogue is from the inspector, if you want to change this, just add a setter to the property
-    /// </summary>
     [Serializable]
     public class DialogueLine {
         [Header("Dialogue Properties")]
         [SerializeField] protected DialogueEntity speaker;
+        public DialogueEntity Speaker => speaker;
 
         [SerializeField] [TextArea(3, 5)] protected string text;
+        public virtual string SerializedText => text;
 
         protected List<DialogueTextTag> tags = new();
-        public ReadOnlyCollection<DialogueTextTag> Tags => tags.AsReadOnly();
+        protected ReadOnlyCollection<DialogueTextTag> readonlyTags = null;
+        public ReadOnlyCollection<DialogueTextTag> Tags => readonlyTags ??= tags.AsReadOnly();
         protected StringBuilder tagBuilder = new();
         protected StringBuilder visibleLineBuilder = new();
         protected StringBuilder invisibleLineBuilder = new();
 
-        public DialogueLine(DialogueLine otherLine) {
+        public string VisibleText { get; protected set; }
+        public string InvisibleText { get; protected set; }
+
+        public virtual object Clone() {
+            return new DialogueLine(this);
+        }
+
+        public void CopyFrom(DialogueLine otherLine) {
             speaker = otherLine.speaker;
             text = $"{otherLine.text}";
+        }
+
+        public DialogueLine(DialogueLine otherLine) {
+            CopyFrom(otherLine);
             Init();
-            VisibleString = text;
-            InvisibleString = text;
+            VisibleText = text;
+            InvisibleText = text;
         }
 
         public DialogueLine(DialogueEntity speaker, string text) {
             this.speaker = speaker;
             this.text = $"{text}";
             Init();
-            VisibleString = text;
-            InvisibleString = text;
+            VisibleText = this.text;
+            InvisibleText = this.text;
         }
 
         protected void Init() {
@@ -60,8 +69,8 @@ namespace Fog.Dialogue {
                 }
             }
             RemoveInvalidTags();
-            VisibleString = visibleLineBuilder.ToString();
-            InvisibleString = invisibleLineBuilder.ToString();
+            VisibleText = visibleLineBuilder.ToString();
+            InvisibleText = invisibleLineBuilder.ToString();
         }
 
         protected int ParseTag(int startIndex, ReadOnlyDictionary<string, DialogueTextTag.Constructor> tagFactory) {
@@ -75,50 +84,10 @@ namespace Fog.Dialogue {
                     return index - 1;
                 }
 
-                if (text[index] != DialogueTextTag.CloseTagChar) {
-                    if (tagName == null && DialogueTextTag.TagStopChars.Contains(text[index]))
-                        tagName = !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
-                    tagBuilder.Append(text[index]);
-                    continue;
-                }
+                if (text[index] == DialogueTextTag.CloseTagChar)
+                    return ParseEndOfTag(index, tagFactory, tagName, isClosing);
 
-                if (tagName == null && tagBuilder.Length < 1) {
-                    tagBuilder.Append(DialogueTextTag.CloseTagChar);
-                    CancelIncompleteTagParse();
-                    return index;
-                }
-
-                tagName ??= !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
-
-                if (!tagFactory.ContainsKey(tagName)) {
-                    tagBuilder.Append(DialogueTextTag.CloseTagChar);
-                    CancelIncompleteTagParse();
-                    return index;
-                }
-
-                if (isClosing) {
-                    for (int tagIndex = tags.Count - 1; tagIndex >= 0; tagIndex--) {
-                        if (tags[tagIndex].ClosingTagIndex >= 0 || string.IsNullOrEmpty(tags[tagIndex].ClosingTag)
-                                                                || tags[tagIndex].tagName != tagName)
-                            continue;
-
-                        tags[tagIndex].SetClosingTagIndex(visibleLineBuilder.Length);
-                        visibleLineBuilder.Append(tags[tagIndex].ClosingTag);
-                        invisibleLineBuilder.Append(tags[tagIndex].ClosingTag);
-                        return index;
-                    }
-                    tagBuilder.Append(DialogueTextTag.CloseTagChar);
-                    CancelIncompleteTagParse();
-                    return index;
-                }
-
-                DialogueTextTag newTag =
-                    tagFactory[tagName].Invoke(visibleLineBuilder.Length, tagName, tagBuilder.ToString());
-                newTag.SetInvisibleIndexes(invisibleLineBuilder.Length);
-                tags.Add(newTag);
-                visibleLineBuilder.Append(newTag.VisibleTag);
-                invisibleLineBuilder.Append(newTag.InvisibleTag);
-                return index;
+                tagName = ParseValidCharacter(index, tagName, isClosing);
             }
             CancelIncompleteTagParse();
             return text.Length - 1;
@@ -139,26 +108,64 @@ namespace Fog.Dialogue {
             tagBuilder.Clear();
         }
 
+        protected virtual int ParseEndOfTag(
+            int index, ReadOnlyDictionary<string, DialogueTextTag.Constructor> tagFactory, string tagName,
+            bool isClosing) {
+            if (tagName == null && tagBuilder.Length < 1) {
+                tagBuilder.Append(DialogueTextTag.CloseTagChar);
+                CancelIncompleteTagParse();
+                return index;
+            }
+
+            tagName ??= !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
+
+            if (!tagFactory.ContainsKey(tagName)) {
+                tagBuilder.Append(DialogueTextTag.CloseTagChar);
+                CancelIncompleteTagParse();
+                return index;
+            }
+
+            return isClosing ? CloseValidOpenTag(index, tagName) : CreateNewTag(index, tagFactory, tagName);
+        }
+
+        protected virtual int CloseValidOpenTag(int index, string tagName) {
+            for (int tagIndex = tags.Count - 1; tagIndex >= 0; tagIndex--) {
+                if (tags[tagIndex].ClosingTagIndex >= 0 || string.IsNullOrEmpty(tags[tagIndex].ClosingTag)
+                                                        || tags[tagIndex].tagName != tagName)
+                    continue;
+
+                tags[tagIndex].SetClosingTagIndex(visibleLineBuilder.Length);
+                visibleLineBuilder.Append(tags[tagIndex].ClosingTag);
+                invisibleLineBuilder.Append(tags[tagIndex].ClosingTag);
+                return index;
+            }
+            tagBuilder.Append(DialogueTextTag.CloseTagChar);
+            CancelIncompleteTagParse();
+            return index;
+        }
+
+        protected virtual int CreateNewTag(
+            int index, ReadOnlyDictionary<string, DialogueTextTag.Constructor> tagFactory, string tagName) {
+            DialogueTextTag newTag =
+                tagFactory[tagName].Invoke(visibleLineBuilder.Length, tagName, tagBuilder.ToString());
+            newTag.SetInvisibleIndexes(invisibleLineBuilder.Length);
+            tags.Add(newTag);
+            visibleLineBuilder.Append(newTag.VisibleTag);
+            invisibleLineBuilder.Append(newTag.InvisibleTag);
+            return index;
+        }
+
+        protected virtual string ParseValidCharacter(int index, string tagName, bool isClosing) {
+            if (tagName == null && DialogueTextTag.TagStopChars.Contains(text[index]))
+                tagName = !isClosing ? tagBuilder.ToString() : tagBuilder.ToString().Remove(0, 1);
+            tagBuilder.Append(text[index]);
+            return tagName;
+        }
+
         protected void RemoveInvalidTags() {
             for (int index = tags.Count - 1; index >= 0; index--) {
                 if (tags[index].MustClose && tags[index].ClosingTagIndex < 0) tags.RemoveAt(index);
             }
-        }
-
-        public void CopyFrom(DialogueLine otherLine) {
-            speaker = otherLine.speaker;
-            text = $"{otherLine.text}";
-        }
-
-        public virtual string Title => speaker == null ? null : speaker.DialogueName;
-        public virtual Color Color => speaker == null ? Color.white : speaker.DialogueColor;
-        public virtual Sprite Portrait => speaker == null ? null : speaker.DialoguePortrait;
-        public virtual string Text => text;
-        public string VisibleString { get; protected set; }
-        public string InvisibleString { get; protected set; }
-
-        public virtual object Clone() {
-            return new DialogueLine(this);
         }
     }
 }

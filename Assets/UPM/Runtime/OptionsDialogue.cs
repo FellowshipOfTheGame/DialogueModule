@@ -28,11 +28,6 @@ namespace Fog.Dialogue {
             otherDialogue.options.CopyTo(options, 0);
         }
 
-        protected override void ParseLineTags() {
-            base.ParseLineTags();
-            question.ParseTags(IDialogue.TMProTagFactory);
-        }
-
         public override object Clone() {
             OptionsDialogue clone = CreateInstance<OptionsDialogue>();
             clone.CopyFrom(this);
@@ -42,7 +37,12 @@ namespace Fog.Dialogue {
         public override void AfterDialogue() {
             base.AfterDialogue();
             if (Agent.Instance) Agent.Instance.BlockInteractions();
-            DialogueHandler.instance.DisplayOptions(question, OptionsCast);
+            DialogueHandler.Instance.DisplayOptions(question, OptionsCast);
+        }
+
+        protected override void ParseLineTags() {
+            base.ParseLineTags();
+            question.ParseTags(IDialogue.TMProTagFactory);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Fog.Dialogue.Samples.Example {
             SimpleMove.instance.BlockMovement();
 
             base.BeforeDialogue();
-            DialogueHandler.instance.OnDialogueStart -= BeforeDialogue;
         }
     }
 }

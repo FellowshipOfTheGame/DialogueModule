@@ -144,7 +144,7 @@ namespace Fog.Dialogue {
             if (selectedOption != null)
                 selectedOption.Select();
             else
-                DialogueHandler.instance.EndDialogueWithoutCallback();
+                DialogueHandler.Instance.InterruptDialogue();
         }
 
         private void ClearOptionList() {

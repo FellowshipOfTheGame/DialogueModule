@@ -5,9 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8f7e9de-5599-484e-9640-1ff9ee6cfb59" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueBox.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueBox.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleDialogueEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleDialogueEntity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLineTypewriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLineTypewriter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/SimpleColoredTag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/SimpleColoredTag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueHandler.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueScrollPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueScrollPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueScrollPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueScrollPanel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/IDialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/IDialogueOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/CustomTags/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/CustomTags/Prefabs/Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Prefabs/Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogueLine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,29 +57,35 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueBox.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLineTypewriter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueTextTag.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/SimpleColoredTag.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/SimpleTextTag.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/IDialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/IDialogueOption.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/SimpleDialogueEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueScrollPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scenes/RuntimeDialoguesScene.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scenes/RuntimeDialoguesScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/ScriptableObjects/RandomDialogueGenerator.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/IDialogueRandomizer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogueLine.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizingOption.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Samples~/SimpleDemo/SimpleController_UsingActionAsset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@349678cb680f/Editor/UGUI/UI/ScrollRectEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@349678cb680f/Runtime/TMP/TMP_TextInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@349678cb680f/Runtime/TMP/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -68,6 +104,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;2-0-update&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -88,10 +125,8 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -100,10 +135,8 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -135,7 +168,7 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
   </component>
@@ -188,7 +221,29 @@
       <workItem from="1760358657328" duration="1842000" />
       <workItem from="1760445252880" duration="1891000" />
       <workItem from="1760455534216" duration="443000" />
-      <workItem from="1760459123491" duration="1661000" />
+      <workItem from="1760459123491" duration="3438000" />
+      <workItem from="1760728949266" duration="3440000" />
+      <workItem from="1760833843072" duration="1536000" />
+      <workItem from="1761223897444" duration="2422000" />
+      <workItem from="1761308526654" duration="7089000" />
+      <workItem from="1762352094189" duration="1550000" />
+      <workItem from="1762430723334" duration="5384000" />
+      <workItem from="1762491027189" duration="4462000" />
+      <workItem from="1762657612882" duration="3068000" />
+      <workItem from="1762746399840" duration="4770000" />
+      <workItem from="1762808210073" duration="1706000" />
+      <workItem from="1762879514435" duration="410000" />
+      <workItem from="1762901170450" duration="5221000" />
+      <workItem from="1763047460420" duration="9609000" />
+      <workItem from="1763296664454" duration="4492000" />
+      <workItem from="1763405648214" duration="4159000" />
+      <workItem from="1763466369165" duration="11838000" />
+      <workItem from="1763657928650" duration="2970000" />
+      <workItem from="1763665176649" duration="59000" />
+      <workItem from="1763665291464" duration="67000" />
+      <workItem from="1763732291975" duration="3250000" />
+      <workItem from="1763948007178" duration="11020000" />
+      <workItem from="1763959647808" duration="510000" />
     </task>
     <task id="LOCAL-00001" summary="Updated editorconfig and ran CodeCleanup">
       <option name="closed" value="true" />
@@ -230,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760455972552</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Optimized creation of dialogue option objects">
+      <option name="closed" value="true" />
+      <created>1760461074288</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760461074288</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +314,8 @@
     <MESSAGE value="Rich tag parsing working properly for most TMPro default tags&#10;&#10;strikethrough tag does not work well with color tag, and a few others were skipped" />
     <MESSAGE value="Updated dialogue option logic and created randomizer for sample" />
     <MESSAGE value="Basic randomizer logic implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic randomizer logic implemented" />
+    <MESSAGE value="Optimized creation of dialogue option objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimized creation of dialogue option objects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

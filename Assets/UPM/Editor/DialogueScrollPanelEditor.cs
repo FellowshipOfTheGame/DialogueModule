@@ -24,6 +24,10 @@ namespace Fog.Dialogue {
                                           new GUIContent("Scroll Down Indicator"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("skipIndicator"),
                                           new GUIContent("Skip Indicator"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("directionsAction"),
+                                          new GUIContent("Scroll Input Action"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("panelImage"),
+                                          new GUIContent("Panel Image"));
             serializedObject.ApplyModifiedProperties();
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Regular Scroll Rect Fields", EditorStyles.boldLabel);

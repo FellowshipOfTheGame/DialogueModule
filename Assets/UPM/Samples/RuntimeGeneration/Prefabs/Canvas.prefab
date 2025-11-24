@@ -33,10 +33,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4140580484200364590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -74.5}
-  m_SizeDelta: {x: 96, y: 109}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7258388085459839374
 CanvasRenderer:
@@ -222,6 +222,8 @@ MonoBehaviour:
   scrollUpIndicator: {fileID: 6312250646339488559}
   scrollDownIndicator: {fileID: 3227080904364636368}
   skipIndicator: {fileID: 4063217149264964398}
+  directionsAction: {fileID: 0}
+  panelImage: {fileID: 0}
 --- !u!1 &3227080904364636368
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,10 +428,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5606108194740391441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 267.27783, y: 0}
-  m_SizeDelta: {x: 534.55566, y: 31.29}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4140580483353834928
 CanvasRenderer:
@@ -562,6 +564,7 @@ GameObject:
   - component: {fileID: 4140580483702526838}
   - component: {fileID: 4140580483702526837}
   - component: {fileID: 1356369659945260034}
+  - component: {fileID: 8695103453821346669}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -651,24 +654,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8b4757776afc847988d36f2e677680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 4140580483353834930}
-  useTitles: 1
-  titleText: {fileID: 662348016924478507}
-  usePortraits: 1
-  portrait: {fileID: 7174107344869619659}
-  dialogue: {fileID: 0}
-  dialogueBox: {fileID: 4140580484200364589}
+  box: {fileID: 8695103453821346669}
   optionHandler: {fileID: 3948858342239414658}
-  directionsAction: {fileID: -4854843027902488372, guid: 57bece6e1157d588cb7d1c7225303e78, type: 3}
   submitAction: {fileID: 8573743842673928875, guid: 57bece6e1157d588cb7d1c7225303e78, type: 3}
   cancelAction: {fileID: -4191013186812335738, guid: 57bece6e1157d588cb7d1c7225303e78, type: 3}
-  useTypingEffect: 1
-  framesBetweenCharacters: 5
-  fillInBeforeSkip: 1
   autoSkip: 0
   timeUntilSkip: 0
   pauseDuringDialogue: 0
   isSingleton: 1
+--- !u!114 &8695103453821346669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140580483702526835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7fa29c8471e99159cf5e4877c720a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 4140580483353834930}
+  rootObject: {fileID: 4140580484200364588}
+  scrollPanel: {fileID: 4140580484200364589}
+  showSpeaker: 1
+  speakerText: {fileID: 662348016924478507}
+  showPortrait: 1
+  portrait: {fileID: 7174107344869619659}
+  useTypingEffect: 1
+  charactersPerSecond: 20
+  onLineFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  onTagParsed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4140580484200364588
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +817,8 @@ MonoBehaviour:
   scrollUpIndicator: {fileID: 6312250646339488559}
   scrollDownIndicator: {fileID: 3227080904364636368}
   skipIndicator: {fileID: 4063217149264964398}
+  directionsAction: {fileID: -4854843027902488372, guid: 57bece6e1157d588cb7d1c7225303e78, type: 3}
+  panelImage: {fileID: 4140580484200364591}
 --- !u!114 &1093653140062460879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +971,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 31.29}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8804915309887743558
 MonoBehaviour:
@@ -1582,10 +1604,10 @@ RectTransform:
   - {fileID: 4140580484275000753}
   m_Father: {fileID: 4140580484200364590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 413.27783, y: -74.5}
-  m_SizeDelta: {x: 534.55566, y: 109}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6592083820854280627
 MonoBehaviour:

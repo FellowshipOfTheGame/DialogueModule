@@ -37,7 +37,7 @@ namespace Fog.Dialogue {
             ProcessAlphaParameter(alphaStart, colorStart);
         }
 
-        private void ProcessColorParameter(int colorStart) {
+        protected void ProcessColorParameter(int colorStart) {
             StringBuilder invisibleBuilder = new(originalTag);
             int colorEnd = GetColorEnd(colorStart);
             if (colorEnd < 0) colorEnd = colorStart + colorIndicator.Length - 1;
@@ -48,7 +48,7 @@ namespace Fog.Dialogue {
             InvisibleTag = invisibleBuilder.ToString();
         }
 
-        private int GetColorEnd(int colorStart) {
+        protected int GetColorEnd(int colorStart) {
             int indicatorIndex = colorStart + colorIndicator.Length;
             if (indicatorIndex > originalTag.Length - 1 || (originalTag[indicatorIndex] != colorStringIndicator
                                                             && originalTag[indicatorIndex] != colorCodeIndicator))
@@ -67,7 +67,7 @@ namespace Fog.Dialogue {
             return -1;
         }
 
-        private void ProcessAlphaParameter(int alphaStart, int colorStart) {
+        protected void ProcessAlphaParameter(int alphaStart, int colorStart) {
             StringBuilder invisibleBuilder = new(colorStart < 0 ? originalTag : InvisibleTag);
             if (colorStart >= 0) alphaStart = InvisibleTag.IndexOf(alphaIndicator, StringComparison.Ordinal);
             int alphaEnd = GetAlphaEnd(alphaStart);
@@ -77,7 +77,7 @@ namespace Fog.Dialogue {
             InvisibleTag = invisibleBuilder.ToString();
         }
 
-        private int GetAlphaEnd(int alphaStart) {
+        protected int GetAlphaEnd(int alphaStart) {
             int indicatorIndex = alphaStart + alphaIndicator.Length;
             if (indicatorIndex > originalTag.Length - 1 || originalTag[indicatorIndex] != colorCodeIndicator) {
                 return -1;

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,7 +31,11 @@ namespace Fog.Dialogue {
         }
 
         public virtual void StartDialogue() {
-            DialogueHandler.instance.StartDialogue(this);
+            DialogueHandler.Instance.StartDialogue(this);
+        }
+
+        protected void OnEnable() {
+            ParseLineTags();
         }
 
         [ContextMenu("Parse Tags (TMPro default)")]
@@ -42,10 +45,6 @@ namespace Fog.Dialogue {
             foreach (DialogueLine dialogueLine in lines) {
                 dialogueLine.ParseTags(IDialogue.TMProTagFactory);
             }
-        }
-
-        protected void OnEnable() {
-            ParseLineTags();
         }
 
 #if UNITY_EDITOR
