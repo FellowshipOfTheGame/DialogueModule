@@ -32,5 +32,9 @@ namespace Fog.Dialogue {
         protected virtual void ToggleFocus() {
             if (focusIndicator) focusIndicator.enabled = !focusIndicator.enabled;
         }
+
+        public virtual void ResetFocus() {
+            if (focusIndicator) focusIndicator.enabled = false;
+        }
     }
 }

@@ -5,39 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8f7e9de-5599-484e-9640-1ff9ee6cfb59" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueBox.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueBox.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DialogueModule/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Editor/DialogueScrollPanelEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Editor/ScrollPanelMenu.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleDialogueEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntityExample.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/SimpleDialogueEntity.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLineTypewriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLineTypewriter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/SimpleColoredTag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/SimpleColoredTag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOption.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/DialogueOptionInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueHandler.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueScrollPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueScrollPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/DialogueScrollPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueScrollPanel.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Handlers/OptionHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/IDialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/IDialogueOption.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/CustomTags/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/CustomTags/Prefabs/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Prefabs/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/DialogueBlockMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/Example/Scripts/OptionsDialogueBlockMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Prefabs/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Prefabs/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomDialogueGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogueLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scripts/RandomizedDialogueLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueOption.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +29,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueBox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/DialogueHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/Controllers/OptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/Controllers/OptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Controllers/OptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/Controllers/OptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/Dialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/DialogueLines/DialogueLine.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,6 +45,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/IDialogueOption.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/OptionsDialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/SimpleDialogueEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/UI/DialogueOption.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueOption.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/italo/Projects/DialogueModule/Assets/UPM/Runtime/UI/DialogueOption.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Runtime/UI/DialogueScrollPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/Scenes/RuntimeDialoguesScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UPM/Samples/RuntimeGeneration/ScriptableObjects/RandomDialogueGenerator.asset" root0="FORCE_HIGHLIGHTING" />
@@ -244,6 +220,11 @@
       <workItem from="1763732291975" duration="3250000" />
       <workItem from="1763948007178" duration="11020000" />
       <workItem from="1763959647808" duration="510000" />
+      <workItem from="1765979450028" duration="10806000" />
+      <workItem from="1766069507139" duration="1000" />
+      <workItem from="1766069520208" duration="595000" />
+      <workItem from="1766075038802" duration="853000" />
+      <workItem from="1766076652144" duration="2431000" />
     </task>
     <task id="LOCAL-00001" summary="Updated editorconfig and ran CodeCleanup">
       <option name="closed" value="true" />
